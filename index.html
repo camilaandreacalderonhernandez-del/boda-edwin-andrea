@@ -1,1 +1,120 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Edwin & Andrea | Nuestra boda</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#fbf7ef;color:#26324a;font-family:Georgia,serif;text-align:center}
+.portada{min-height:92vh;padding:70px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(145deg,#293b59,#0d172b);color:#fff9ed}
+.dorado{color:#dfc486}
+.sobre{font:11px Arial,sans-serif;letter-spacing:4px;text-transform:uppercase}
+h1{font-size:clamp(44px,10vw,76px);font-weight:normal;line-height:1.1;margin:25px 0}
+h2{font-size:34px;font-weight:normal;color:#182640}
+p{line-height:1.8}
+.fecha{letter-spacing:3px;font:14px Arial,sans-serif}
+button,.boton{display:inline-block;padding:14px 23px;border:1px solid #d9bd7b;border-radius:28px;background:transparent;color:inherit;text-decoration:none;cursor:pointer;margin:8px}
+.seccion{padding:55px 20px;max-width:760px;margin:auto}
+.cuenta{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-width:520px;margin:25px auto}
+.caja{padding:17px 4px;background:white;border:1px solid #e5d8bc;border-radius:10px}
+.numero{font-size:clamp(24px,6vw,38px);display:block}
+.etiqueta{font:10px Arial,sans-serif;letter-spacing:1px}
+.detalles{background:#f0e7d8;padding:45px 20px}
+footer{padding:30px;background:#101b31;color:#fff9ed}
+</style>
+</head>
+<body>
+<header class="portada">
+  <div class="sobre dorado">Con la bendición de Dios</div>
+  <div class="dorado" style="font-size:30px;margin-top:24px">✧ ♡ ✧</div>
+  <h1>Edwin <span class="dorado">&</span><br>Andrea</h1>
+  <div class="fecha dorado">12 · DICIEMBRE · 2026</div>
+  <p>Dos tierras diferentes, pero el amor nos une.</p>
+  <p>Con el corazón lleno de gratitud, queremos compartir contigo el comienzo de nuestra nueva etapa.</p>
+  <a class="boton" href="#invitacion">Descubre nuestra invitación ↓</a>
+</header>
+
+<main id="invitacion">
+<section class="seccion">
+  <div class="sobre">¡Nos casamos!</div>
+  <h2>Una promesa de amor</h2>
+  <p>Bajo la bendición de Dios, hemos decidido unir nuestras vidas y construir nuestra familia. Nos haría muy felices contar contigo en este día tan especial.</p>
+  <div class="dorado" style="font-size:25px">✧ ─── ♡ ─── ✧</div>
+  <div class="sobre">Nuestra cuenta regresiva</div>
+  <div class="cuenta">
+    <div class="caja"><span class="numero" id="dias">0</span><span class="etiqueta">DÍAS</span></div>
+    <div class="caja"><span class="numero" id="horas">0</span><span class="etiqueta">HORAS</span></div>
+    <div class="caja"><span class="numero" id="minutos">0</span><span class="etiqueta">MINUTOS</span></div>
+    <div class="caja"><span class="numero" id="segundos">0</span><span class="etiqueta">SEGUNDOS</span></div>
+  </div>
+  <p id="mensaje">12 de diciembre de 2026 · Samacá, Boyacá</p>
+</section>
+
+<div class="detalles">
+  <div class="sobre">Reserva la fecha</div>
+  <h2>Nuestro gran día</h2>
+  <p><strong>Fecha:</strong> sábado, 12 de diciembre de 2026</p>
+  <p><strong>Lugar:</strong> Samacá, Boyacá</p>
+  <p><strong>Ceremonia:</strong> [Escribe aquí la capilla y la hora]</p>
+  <p><strong>Celebración:</strong> [Escribe aquí el lugar y la hora]</p>
+  <a class="boton" style="color:#182640;border-color:#182640" href="https://maps.google.com/?q=Samaca+Boyaca" target="_blank">Ver mapa de Samacá</a>
+</div>
+
+<section class="seccion">
+  <div class="sobre">Una melodía para nosotros</div>
+  <h2>Nuestra canción ♫</h2>
+  <p>Pulsa para escuchar nuestra música mientras disfrutas de esta invitación.</p>
+  <button id="botonMusica" style="color:#182640;border-color:#182640">♫ Reproducir música</button>
+  <audio id="musica" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+  </audio>
+  <p id="estadoMusica" style="font-size:12px">La música se activará cuando agregues el archivo musica.mp3 al repositorio.</p>
+</section>
+</main>
+
+<footer>
+  <p>Con amor y la bendición de Dios</p>
+  <div class="dorado" style="font-size:26px">Edwin & Andrea</div>
+  <p>12 · 12 · 2026</p>
+</footer>
+
+<script>
+const boda = new Date(2026,11,12,0,0,0);
+function actualizar(){
+  let diferencia = boda.getTime()-Date.now();
+  if(diferencia<=0){
+    ["dias","horas","minutos","segundos"].forEach(id=>document.getElementById(id).textContent="0");
+    document.getElementById("mensaje").textContent="¡Llegó nuestro gran día!";
+    return;
+  }
+  let s=Math.floor(diferencia/1000);
+  document.getElementById("dias").textContent=Math.floor(s/86400);
+  document.getElementById("horas").textContent=Math.floor(s%86400/3600);
+  document.getElementById("minutos").textContent=Math.floor(s%3600/60);
+  document.getElementById("segundos").textContent=s%60;
+}
+actualizar();
+setInterval(actualizar,1000);
+
+const musica=document.getElementById("musica");
+const boton=document.getElementById("botonMusica");
+boton.addEventListener("click",async()=>{
+  if(musica.paused){
+    try{
+      await musica.play();
+      boton.textContent="Ⅱ Pausar música";
+      document.getElementById("estadoMusica").textContent="Disfruta nuestra melodía.";
+    }catch(e){
+      document.getElementById("estadoMusica").textContent="Primero debes subir un archivo de audio llamado musica.mp3.";
+    }
+  }else{
+    musica.pause();
+    boton.textContent="♫ Reproducir música";
+  }
+});
+</script>
+</body>
+</html>
+
