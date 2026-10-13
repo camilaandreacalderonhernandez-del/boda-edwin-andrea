@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#101b31">
-
   <title>Edwin & Andrea | Nuestra boda</title>
 
   <style>
@@ -18,13 +17,9 @@
       --texto: #e9e2d3;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -35,17 +30,11 @@
       overflow-x: hidden;
     }
 
-    body.sin-scroll {
-      overflow: hidden;
-    }
+    body.sin-scroll { overflow: hidden; }
 
-    h1, h2, h3, p {
-      margin-top: 0;
-    }
+    h1, h2, h3, p { margin-top: 0; }
 
-    h1, h2 {
-      font-weight: normal;
-    }
+    h1, h2 { font-weight: normal; }
 
     h2 {
       color: var(--oro-claro);
@@ -53,14 +42,13 @@
       margin-bottom: 20px;
     }
 
-    p {
-      line-height: 1.8;
-    }
+    p { line-height: 1.8; }
 
     section {
       position: relative;
       padding: 75px 20px;
       overflow: hidden;
+      scroll-margin-top: 0;
     }
 
     .contenido {
@@ -105,80 +93,7 @@
       transform: translateY(-2px);
     }
 
-    /* PORTADA */
-
-    .portada {
-      min-height: 100vh;
-      min-height: 100svh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 55px 20px;
-      background:
-        radial-gradient(ellipse at top, #293b59 0%, transparent 65%),
-        linear-gradient(180deg, #101b31, #0b1425);
-    }
-
-    .portada::before,
-    .portada::after {
-      content: "";
-      position: absolute;
-      width: 250px;
-      height: 250px;
-      border: 1px solid rgba(199,164,91,.2);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
-    .portada::before {
-      top: -150px;
-      left: -120px;
-    }
-
-    .portada::after {
-      right: -150px;
-      bottom: -140px;
-    }
-
-    .nombres-portada {
-      color: var(--oro-claro);
-      font-size: clamp(39px, 8vw, 72px);
-      line-height: 1.2;
-      margin: 22px 0 10px;
-    }
-
-    .ampersand {
-      color: var(--dorado);
-      font-style: italic;
-    }
-
-    .frase-portada {
-      color: var(--texto);
-      font-size: 16px;
-      max-width: 510px;
-      margin: 18px auto 25px;
-    }
-
-    .fecha-portada {
-      color: var(--oro-claro);
-      font-size: 13px;
-      letter-spacing: 3px;
-      margin-bottom: 28px;
-    }
-
     /* FOTOGRAFÍAS */
-
-    .foto-circular {
-      width: min(66vw, 310px);
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      border-radius: 50%;
-      padding: 8px;
-      border: 1px solid var(--dorado);
-      outline: 1px solid rgba(199,164,91,.45);
-      outline-offset: 7px;
-      box-shadow: 0 0 35px rgba(199,164,91,.12);
-    }
 
     .foto-seccion {
       display: block;
@@ -207,7 +122,7 @@
       border-radius: 12px;
     }
 
-    /* INVITACIÓN DE ENTRADA */
+    /* PANTALLA INICIAL */
 
     .entrada {
       position: fixed;
@@ -286,10 +201,7 @@
       animation: brillar 2s infinite alternate;
     }
 
-    .destello.uno {
-      top: 5%;
-      right: 2%;
-    }
+    .destello.uno { top: 5%; right: 2%; }
 
     .destello.dos {
       bottom: 10%;
@@ -313,6 +225,11 @@
       color: var(--texto);
       font-size: 14px;
       margin-bottom: 25px;
+    }
+
+    .ampersand {
+      color: var(--dorado);
+      font-style: italic;
     }
 
     /* LLUVIA DE CORAZONES */
@@ -339,19 +256,15 @@
         transform: translateY(-20px) rotate(0deg);
         opacity: 0;
       }
-      10% {
-        opacity: .55;
-      }
-      90% {
-        opacity: .4;
-      }
+      10% { opacity: .55; }
+      90% { opacity: .4; }
       100% {
         transform: translateY(110vh) rotate(270deg);
         opacity: 0;
       }
     }
 
-    /* PROMESA */
+    /* PROMESA DE AMOR */
 
     .promesa {
       background: linear-gradient(180deg, #101b31, #172640);
@@ -386,9 +299,7 @@
 
     /* CUENTA REGRESIVA */
 
-    .cuenta {
-      background: #0c1628;
-    }
+    .cuenta { background: #0c1628; }
 
     .contador {
       display: grid;
@@ -538,41 +449,27 @@
     }
 
     @media (max-width: 600px) {
-      section {
-        padding: 58px 17px;
-      }
+      section { padding: 58px 17px; }
 
       .eventos {
         grid-template-columns: 1fr;
         gap: 16px;
       }
 
-      .evento {
-        padding: 25px 18px;
-      }
+      .evento { padding: 25px 18px; }
 
-      .contador {
-        gap: 7px;
-      }
+      .contador { gap: 7px; }
 
-      .unidad {
-        padding: 16px 3px;
-      }
+      .unidad { padding: 16px 3px; }
 
       .unidad span:last-child {
         font-size: 9px;
         letter-spacing: 1px;
       }
-
-      .frase-portada {
-        font-size: 14px;
-      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
+      html { scroll-behavior: auto; }
 
       *, *::before, *::after {
         animation-duration: .01ms !important;
@@ -584,17 +481,16 @@
 
 <body class="sin-scroll">
 
-  <!-- LLUVIA DE CORAZONES DORADOS -->
   <div class="lluvia-corazones" id="lluviaCorazones" aria-hidden="true"></div>
 
   <!-- PANTALLA DE ENTRADA -->
   <div class="entrada" id="entrada">
     <div class="entrada-contenido">
+
       <div class="entrada-etiqueta">Una promesa de amor</div>
 
       <div class="marco-novios">
-        <img src="NOVIOS2.0.jpeg"
-             alt="Fotografía de Edwin y Andrea">
+        <img src="NOVIOS2.0.jpeg" alt="Fotografía de Edwin y Andrea">
 
         <div class="aro"></div>
         <div class="aro aro-dos"></div>
@@ -614,10 +510,11 @@
       <button class="boton" id="abrirInvitacion" type="button">
         💌 Abrir nuestra invitación
       </button>
+
     </div>
   </div>
 
-  <!-- MÚSICA: SE INTENTA INICIAR AL ABRIR LA INVITACIÓN -->
+  <!-- MÚSICA -->
   <iframe
     id="musica"
     title="Música de nuestra invitación"
@@ -632,29 +529,7 @@
 
   <main>
 
-    <!-- PORTADA -->
-    <section class="portada" id="inicio">
-      <div class="contenido">
-        <div class="sobre">Con la bendición de Dios</div>
-
-        <h1 class="nombres-portada">
-          Edwin <span class="ampersand">&</span> Andrea
-        </h1>
-
-        <div class="linea"></div>
-
-        <p class="frase-portada">
-          Nos llena de alegría invitarte a celebrar
-          el comienzo de esta nueva etapa de nuestro amor.
-        </p>
-
-        <p class="fecha-portada">SÁBADO · 12 DE DICIEMBRE · 2026</p>
-
-        <a class="boton" href="#invitacion">Conoce los detalles ↓</a>
-      </div>
-    </section>
-
-    <!-- UNA PROMESA DE AMOR -->
+    <!-- ESTA ES LA PRIMERA SECCIÓN DESPUÉS DE ABRIR -->
     <section class="promesa" id="invitacion">
       <div class="contenido">
 
@@ -677,12 +552,14 @@
           src="ANILLOS.jpeg"
           alt="Los anillos que simbolizan nuestra unión"
           class="foto-anillos">
+
       </div>
     </section>
 
     <!-- CUENTA REGRESIVA -->
     <section class="cuenta">
       <div class="contenido">
+
         <div class="sobre">La cuenta regresiva comienza</div>
         <h2>Falta muy poco</h2>
 
@@ -709,6 +586,7 @@
             <span>Segundos</span>
           </div>
         </div>
+
       </div>
     </section>
 
@@ -757,18 +635,15 @@
 
             <div class="evento-titulo">Ceremonia religiosa</div>
 
-            <p>
-              <strong>Parroquia Señor de los Milagros de Samacá</strong>
-            </p>
-
+            <p><strong>Parroquia Señor de los Milagros de Samacá</strong></p>
             <p>Capilla El Voto</p>
-
             <p><strong>3:00 p. m.</strong></p>
 
             <p class="nota-evento">
               Uniremos nuestras vidas ante Dios,
               acompañados de las personas que amamos.
             </p>
+
           </article>
 
           <!-- RECEPCIÓN -->
@@ -799,13 +674,13 @@
             <div class="evento-titulo">Recepción</div>
 
             <p><strong>Rancho Gran Gils</strong></p>
-
             <p>Vereda Churuvita, Samacá</p>
 
             <p class="nota-evento">
               Celebraremos juntos esta nueva etapa
               con alegría, cariño y mucha ilusión.
             </p>
+
           </article>
 
         </div>
@@ -853,7 +728,9 @@
         alt="Nuestros anillos"
         class="foto-anillos">
 
-      <div class="nombres">Edwin <span class="ampersand">&</span> Andrea</div>
+      <div class="nombres">
+        Edwin <span class="ampersand">&</span> Andrea
+      </div>
 
       <p>12 de diciembre de 2026 · Samacá, Boyacá</p>
 
@@ -867,21 +744,28 @@
   </footer>
 
   <script>
-    // ABRIR INVITACIÓN E INTENTAR INICIAR LA MÚSICA
+    // ABRIR LA INVITACIÓN DIRECTAMENTE EN "¡NOS CASAMOS!"
     const botonAbrir = document.getElementById("abrirInvitacion");
     const pantallaEntrada = document.getElementById("entrada");
     const reproductor = document.getElementById("musica");
 
     botonAbrir.addEventListener("click", function () {
+      // Intentar iniciar la música al pulsar el botón.
       reproductor.src =
         "https://www.youtube.com/embed/a_wBQrUdcvk?autoplay=1&loop=1&playlist=a_wBQrUdcvk";
 
+      // Quitar la pantalla inicial.
       pantallaEntrada.classList.add("oculta");
       document.body.classList.remove("sin-scroll");
+
+      // Ir directamente a "¡Nos casamos!".
+      document.getElementById("invitacion").scrollIntoView({
+        behavior: "auto",
+        block: "start"
+      });
     });
 
     // CUENTA REGRESIVA: 12 DE DICIEMBRE DE 2026, 3:00 P. M.
-    // Colombia corresponde a UTC-5.
     const fechaBoda = new Date("2026-12-12T15:00:00-05:00").getTime();
 
     function actualizarCuenta() {
