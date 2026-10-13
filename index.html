@@ -21,7 +21,10 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 15px;
+}
 
 body {
   margin: 0;
@@ -36,9 +39,11 @@ body.sin-scroll { overflow: hidden; }
 
 button { font-family: inherit; }
 
-/* =====================================
-   NUEVO SOBRE DORADO E & A
-===================================== */
+p { line-height: 1.8; }
+
+/* ===================================
+   PORTADA: SOBRE DE PAPEL REAL
+=================================== */
 
 .sobre-intro {
   position: fixed;
@@ -48,11 +53,11 @@ button { font-family: inherit; }
   align-items: center;
   justify-content: center;
   padding: 24px 18px;
-  overflow: hidden;
+  overflow-y: auto;
   background:
-    radial-gradient(ellipse at 50% 38%, #293b59 0%, transparent 58%),
+    radial-gradient(ellipse at 50% 35%, #293b59 0%, transparent 58%),
     linear-gradient(145deg, #0b1323, #101b31 55%, #17243a);
-  transition: opacity .8s ease, visibility .8s ease;
+  transition: opacity 1s ease, visibility 1s ease;
 }
 
 .sobre-intro.retirado {
@@ -67,42 +72,48 @@ button { font-family: inherit; }
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px 0;
   animation: aparecer 1s ease both;
 }
 
 .sobre-etiqueta {
   margin: 0 0 12px;
   color: var(--dorado-claro);
-  font-size: 11px;
-  letter-spacing: 4px;
+  font-size: 10px;
+  letter-spacing: 3px;
   text-transform: uppercase;
 }
 
 .sobre-titulo {
   margin: 0 0 8px;
   color: var(--marfil);
-  font-size: clamp(29px, 7vw, 39px);
+  font-size: clamp(28px, 7vw, 38px);
   font-weight: normal;
 }
 
 .sobre-frase {
-  margin: 0 0 38px;
+  margin: 0 0 34px;
   color: #e9dfce;
-  font-size: 16px;
+  font-size: 15px;
   font-style: italic;
-  line-height: 1.7;
+  line-height: 1.8;
 }
+
+/* Escenario del sobre */
 
 .escenario-sobre {
   position: relative;
   width: min(88vw, 370px);
   aspect-ratio: 1.32 / 1;
-  perspective: 1000px;
-  filter: drop-shadow(0 24px 28px rgba(0,0,0,.35));
+  perspective: 1100px;
+  filter: drop-shadow(0 22px 25px rgba(0,0,0,.4));
 }
+
+/* La tarjeta que está dentro */
 
 .carta-detras {
   position: absolute;
+  z-index: 1;
   left: 7%;
   top: 0;
   width: 86%;
@@ -112,18 +123,21 @@ button { font-family: inherit; }
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid #dfc88d;
-  background:
-    linear-gradient(135deg, #fffdf5, #f1e5c8);
   color: var(--azul);
-  box-shadow: inset 0 0 0 5px rgba(201,164,92,.12);
-  transition: transform 1s ease, top 1s ease;
+  border: 1px solid #d9c28a;
+  background:
+    radial-gradient(ellipse at top left, #fffef9, transparent 65%),
+    linear-gradient(135deg, #fffdf7, #eee0bf);
+  box-shadow:
+    inset 0 0 0 5px rgba(201,164,92,.12),
+    0 3px 8px rgba(0,0,0,.12);
+  transition: top 1s ease, transform 1s ease;
 }
 
 .carta-detras::before {
   content: "✧";
   color: var(--dorado);
-  font-size: 23px;
+  font-size: 25px;
   margin-bottom: 8px;
 }
 
@@ -146,14 +160,42 @@ button { font-family: inherit; }
   letter-spacing: 3px;
 }
 
+/* Cuerpo del sobre: papel con textura y pliegues */
+
 .sobre-base {
   position: absolute;
+  z-index: 2;
   inset: 13% 0 0;
   overflow: hidden;
-  background: linear-gradient(145deg, #f0dba7, #c9a45c 52%, #aa803d);
-  border: 1px solid #e6cd8c;
-  border-radius: 3px;
-  box-shadow: inset 0 0 0 5px rgba(255,255,255,.12);
+  border: 1px solid #c6b99d;
+  border-radius: 2px;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(110,90,56,.025) 0px,
+      rgba(110,90,56,.025) 1px,
+      transparent 1px,
+      transparent 4px
+    ),
+    radial-gradient(ellipse at 20% 15%, #fffdf5 0%, transparent 65%),
+    linear-gradient(145deg, #f6efdf, #e9ddc5 65%, #d8c9ab);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.65),
+    inset 0 -10px 22px rgba(116,91,52,.08),
+    0 8px 15px rgba(0,0,0,.18);
+}
+
+/* Líneas de pliegue del papel */
+
+.sobre-base::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(145deg, transparent 49.5%, rgba(119,94,54,.13) 50%, transparent 50.5%),
+    linear-gradient(215deg, transparent 49.5%, rgba(119,94,54,.12) 50%, transparent 50.5%);
 }
 
 .solapa-izquierda,
@@ -164,70 +206,92 @@ button { font-family: inherit; }
 }
 
 .solapa-izquierda {
-  background: linear-gradient(115deg, #e8cf92, #c29a4e);
+  background: linear-gradient(115deg, #f8f1e3, #e2d3b6);
   clip-path: polygon(0 0, 55% 50%, 0 100%);
+  filter: drop-shadow(1px 0 1px rgba(111,87,48,.2));
 }
 
 .solapa-derecha {
-  background: linear-gradient(245deg, #f4dfaa, #c7a158);
+  background: linear-gradient(245deg, #fbf5e8, #e1d0b0);
   clip-path: polygon(100% 0, 45% 50%, 100% 100%);
 }
 
 .solapa-inferior {
-  background: linear-gradient(20deg, #c09a50, #e8d097);
+  background: linear-gradient(20deg, #d8c6a4, #f3e8d3 70%);
   clip-path: polygon(0 100%, 50% 37%, 100% 100%);
 }
 
+/* Solapa superior */
+
 .solapa-superior {
   position: absolute;
-  z-index: 4;
+  z-index: 5;
   top: 13%;
   left: 0;
   width: 100%;
   height: 60%;
-  background: linear-gradient(160deg, #f7e5b4, #c6a05a 82%);
+  background:
+    linear-gradient(160deg, rgba(255,255,255,.55), transparent 70%),
+    linear-gradient(180deg, #f8f0df, #e4d3b2);
   clip-path: polygon(0 0, 100% 0, 50% 100%);
   transform-origin: top center;
-  transition: transform .85s ease, opacity .4s ease;
-  filter: drop-shadow(0 3px 2px rgba(71,49,15,.12));
+  transition: transform .9s ease, opacity .5s ease;
+  filter: drop-shadow(0 3px 2px rgba(71,49,15,.15));
 }
+
+/* Sello de cera */
 
 .sello-boton {
   position: absolute;
   z-index: 10;
   left: 50%;
   top: 56%;
-  width: 91px;
-  height: 91px;
+  width: 94px;
+  height: 94px;
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 2px;
-  border: 2px solid #e6c87d;
-  border-radius: 50%;
+  padding: 0;
+  border: 1px solid #9c3a3c;
+  border-radius: 43% 52% 47% 55% / 51% 43% 56% 47%;
   background:
-    radial-gradient(circle at 32% 24%, #b83b3d, #821c2b 54%, #57101e);
+    radial-gradient(ellipse at 29% 21%, rgba(255,180,159,.72), transparent 26%),
+    radial-gradient(ellipse at 70% 75%, rgba(65,0,13,.55), transparent 45%),
+    radial-gradient(circle at 40% 35%, #b94347, #8b1f2d 65%, #5b101e);
   color: #f8e8bb;
   box-shadow:
-    0 0 0 4px rgba(126, 26, 39, .32),
-    inset 0 0 0 2px rgba(244,207,133,.38),
-    0 6px 13px rgba(0,0,0,.28);
+    0 0 0 3px rgba(110,19,29,.65),
+    0 0 0 5px rgba(201,164,92,.42),
+    inset 0 2px 3px rgba(255,214,189,.4),
+    inset 0 -5px 8px rgba(48,0,10,.42),
+    0 7px 12px rgba(0,0,0,.32);
   cursor: pointer;
   transition: transform .3s ease, opacity .4s ease, filter .3s ease;
   -webkit-tap-highlight-color: transparent;
 }
 
+.sello-boton::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(247,207,159,.55);
+  border-radius: 46% 52% 43% 56% / 50% 44% 56% 47%;
+  pointer-events: none;
+}
+
 .sello-boton:hover {
   filter: brightness(1.12);
-  transform: translate(-50%, -50%) scale(1.06);
+  transform: translate(-50%, -50%) scale(1.05);
 }
 
 .sello-iniciales {
   font-size: 24px;
   font-style: italic;
   line-height: 1.1;
+  text-shadow: 0 1px 2px rgba(52,0,0,.6);
 }
 
 .sello-adornos {
@@ -239,10 +303,10 @@ button { font-family: inherit; }
   position: absolute;
   top: calc(100% + 18px);
   left: 50%;
-  width: 240px;
+  width: 250px;
   transform: translateX(-50%);
   color: var(--dorado-claro);
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   animation: respirar 1.8s ease-in-out infinite;
@@ -250,26 +314,22 @@ button { font-family: inherit; }
 
 .sobre-intro.abriendo .solapa-superior {
   transform: rotateX(180deg);
-  opacity: .3;
+  opacity: .25;
 }
 
 .sobre-intro.abriendo .sello-boton {
   opacity: 0;
-  transform: translate(-50%, -50%) scale(1.5) rotate(-15deg);
+  transform: translate(-50%, -50%) scale(1.4) rotate(-12deg);
   pointer-events: none;
 }
 
 .sobre-intro.abriendo .carta-detras {
-  top: -25%;
+  top: -27%;
   transform: translateY(-12%) scale(1.04);
 }
 
-.sobre-intro.abriendo .escenario-sobre {
-  animation: brilloSobre 1.2s ease;
-}
-
 .sobre-pie {
-  margin: 68px 0 0;
+  margin: 66px 0 0;
   color: #bfc3cd;
   font-size: 12px;
   line-height: 1.8;
@@ -277,154 +337,9 @@ button { font-family: inherit; }
 
 .sobre-pie span { color: var(--dorado-claro); }
 
-/* =====================================
-   PORTADA ORIGINAL
-===================================== */
-
-.entrada {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 22px;
-  overflow-y: auto;
-  background:
-    radial-gradient(ellipse at top, #243451 0%, transparent 55%),
-    var(--azul);
-  transition: opacity .9s ease, visibility .9s ease;
-}
-
-.entrada.esperando {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-.entrada.oculta {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-.entrada-contenido {
-  width: 100%;
-  max-width: 470px;
-  padding: 24px 12px;
-  animation: aparecer 1.2s ease both;
-}
-
-.mini-texto {
-  margin: 0 0 17px;
-  color: var(--dorado-claro);
-  font-size: 11px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-}
-
-.marco-foto {
-  position: relative;
-  width: min(78vw, 310px);
-  margin: 0 auto 24px;
-  padding: 10px;
-}
-
-.marco-foto::before,
-.marco-foto::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border: 1px solid var(--dorado);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.marco-foto::before { transform: rotate(-7deg) scale(1.02, 1.04); }
-
-.marco-foto::after {
-  transform: rotate(7deg) scale(1.05, 1.02);
-  border-color: rgba(240,219,167,.55);
-}
-
-.foto-portada {
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  border-radius: 48% 48% 46% 46%;
-  border: 2px solid var(--dorado);
-  box-shadow: 0 0 30px rgba(201,164,92,.17);
-}
-
-.destello {
-  position: absolute;
-  z-index: 2;
-  color: var(--dorado-claro);
-  font-size: 23px;
-  animation: brillar 2s ease-in-out infinite alternate;
-}
-
-.destello.uno { top: 4%; right: 3%; }
-
-.destello.dos {
-  bottom: 13%;
-  left: 0;
-  animation-delay: .6s;
-}
-
-.entrada h1 {
-  margin: 8px 0 5px;
-  color: var(--marfil);
-  font-size: clamp(38px, 10vw, 55px);
-  font-weight: normal;
-  line-height: 1.1;
-}
-
-.entrada-subtitulo {
-  margin: 12px 0 22px;
-  color: var(--dorado-claro);
-  font-size: clamp(20px, 5vw, 27px);
-  font-style: italic;
-}
-
-.entrada-mensaje {
-  max-width: 350px;
-  margin: 0 auto 25px;
-  color: #e8dfcf;
-  font-size: 15px;
-  line-height: 1.8;
-}
-
-.boton-dorado {
-  display: inline-block;
-  padding: 15px 25px;
-  border: 1px solid var(--dorado);
-  border-radius: 3px;
-  background: linear-gradient(135deg, #e9d39d, #c6a05a);
-  color: #172137;
-  font-size: 13px;
-  letter-spacing: 1.3px;
-  cursor: pointer;
-  box-shadow: 0 5px 22px rgba(0,0,0,.22);
-  transition: transform .25s, box-shadow .25s;
-}
-
-.boton-dorado:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(201,164,92,.2);
-}
-
-.nota-musica {
-  margin: 15px 0 0;
-  color: #c9c5bd;
-  font-size: 12px;
-  line-height: 1.6;
-}
-
-/* =====================================
+/* ===================================
    CONTENIDO DE LA INVITACIÓN
-===================================== */
+=================================== */
 
 main {
   width: 100%;
@@ -471,8 +386,6 @@ h3 {
   font-style: italic;
 }
 
-p { line-height: 1.8; }
-
 .promesa {
   margin-top: 7px;
   color: var(--dorado-claro);
@@ -505,15 +418,21 @@ p { line-height: 1.8; }
   padding: 6px;
 }
 
+/* Cuenta regresiva */
+
 .cuenta-regresiva {
   background: var(--marfil);
   color: var(--texto-oscuro);
 }
 
 .cuenta-regresiva .etiqueta,
-.cuenta-regresiva h2 { color: var(--texto-oscuro); }
+.cuenta-regresiva h2 {
+  color: var(--texto-oscuro);
+}
 
-.cuenta-regresiva .linea-dorada { background: var(--dorado); }
+.cuenta-regresiva .linea-dorada {
+  background: var(--dorado);
+}
 
 .reloj {
   display: grid;
@@ -551,6 +470,8 @@ p { line-height: 1.8; }
   font-size: 15px;
   letter-spacing: 1px;
 }
+
+/* Detalles del gran día */
 
 .foto-detalle {
   display: block;
@@ -613,6 +534,8 @@ p { line-height: 1.8; }
   font-style: italic;
 }
 
+/* Lluvia de sobres */
+
 .regalos {
   background: radial-gradient(ellipse at center, #1c2b44 0%, var(--azul) 75%);
 }
@@ -625,9 +548,11 @@ p { line-height: 1.8; }
   object-fit: contain;
 }
 
+/* Título deliberadamente más pequeño */
+
 .titulo-regalos {
   margin-bottom: 4px;
-  font-size: clamp(31px, 7vw, 43px);
+  font-size: clamp(25px, 5.5vw, 32px);
 }
 
 .subtitulo-regalos {
@@ -644,7 +569,7 @@ p { line-height: 1.8; }
   font-size: 15px;
 }
 
-.sobre {
+.simbolo-sobre {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -655,6 +580,8 @@ p { line-height: 1.8; }
   color: var(--dorado-claro);
   font-size: 33px;
 }
+
+/* Final */
 
 .pie {
   padding: 55px 20px 40px;
@@ -678,12 +605,6 @@ p { line-height: 1.8; }
   font-weight: normal;
 }
 
-.pie-fecha {
-  color: var(--dorado-claro);
-  font-size: 13px;
-  letter-spacing: 2px;
-}
-
 .dios-tu-y-yo {
   margin-top: 30px;
   color: var(--dorado-claro);
@@ -691,7 +612,7 @@ p { line-height: 1.8; }
   letter-spacing: 5px;
 }
 
-/* LLUVIA DE CORAZONES */
+/* Lluvia de corazones dorados */
 
 .corazones {
   position: fixed;
@@ -722,20 +643,9 @@ p { line-height: 1.8; }
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes brillar {
-  from { opacity: .45; transform: scale(.85); }
-  to { opacity: 1; transform: scale(1.15); }
-}
-
 @keyframes respirar {
   0%, 100% { opacity: .65; }
   50% { opacity: 1; }
-}
-
-@keyframes brilloSobre {
-  0% { filter: brightness(1); }
-  50% { filter: brightness(1.16); }
-  100% { filter: brightness(1); }
 }
 
 @media (max-width: 520px) {
@@ -757,31 +667,24 @@ p { line-height: 1.8; }
     letter-spacing: 0;
   }
 
-  .entrada-contenido {
-    padding-top: 15px;
-    padding-bottom: 15px;
-  }
-
-  .marco-foto { width: min(70vw, 260px); }
-
   .sello-boton {
-    width: 79px;
-    height: 79px;
+    width: 80px;
+    height: 80px;
   }
 
   .sello-iniciales { font-size: 21px; }
 
-  .sobre-frase { margin-bottom: 30px; }
+  .sobre-frase { margin-bottom: 28px; }
 
   .sobre-pie { margin-top: 60px; }
 }
 
 @media (max-height: 650px) {
-  .sobre-intro { overflow-y: auto; }
+  .sobre-intro { align-items: flex-start; }
 
-  .sobre-contenido { padding: 15px 0; }
+  .sobre-contenido { padding: 12px 0; }
 
-  .sobre-frase { margin-bottom: 22px; }
+  .sobre-frase { margin-bottom: 20px; }
 
   .escenario-sobre { width: min(76vw, 310px); }
 
@@ -803,7 +706,7 @@ p { line-height: 1.8; }
 
 <body class="sin-scroll">
 
-<!-- CANCIÓN MP3 -->
+<!-- MÚSICA -->
 <audio
   id="musica"
   src="BERL%C3%8DN%20FELICIT%C3%80.mp3"
@@ -811,9 +714,10 @@ p { line-height: 1.8; }
   preload="auto"
 ></audio>
 
-<!-- NUEVA PANTALLA: SOBRE CERRADO -->
-<section class="sobre-intro" id="sobreIntro" aria-label="Abre nuestra invitación">
+<!-- SOBRE CERRADO -->
+<section class="sobre-intro" id="sobreIntro" aria-label="Invitación de boda">
   <div class="sobre-contenido">
+
     <p class="sobre-etiqueta">Una fecha, una promesa, una vida juntos</p>
 
     <h1 class="sobre-titulo">Tienes una invitación</h1>
@@ -823,7 +727,8 @@ p { line-height: 1.8; }
       un pedacito de nuestra historia.
     </p>
 
-    <div class="escenario-sobre" id="escenarioSobre">
+    <div class="escenario-sobre">
+
       <div class="carta-detras">
         <strong>Edwin & Andrea</strong>
         <span>Una promesa de amor</span>
@@ -857,52 +762,26 @@ p { line-height: 1.8; }
       Con amor, <span>Edwin & Andrea</span><br>
       <span>DIOS, TÚ Y YO</span>
     </p>
+
   </div>
 </section>
 
-<!-- PORTADA ORIGINAL: APARECE DESPUÉS DEL SOBRE -->
-<div class="entrada esperando" id="entrada">
-  <div class="entrada-contenido">
-    <p class="mini-texto">Una invitación desde el corazón</p>
-
-    <div class="marco-foto">
-      <span class="destello uno">✧</span>
-      <span class="destello dos">✦</span>
-      <img
-        class="foto-portada"
-        src="NOVIOS2.0.jpeg"
-        alt="Fotografía de los novios"
-      >
-    </div>
-
-    <h1>Edwin & Andrea</h1>
-    <p class="entrada-subtitulo">Una promesa de amor</p>
-
-    <p class="entrada-mensaje">
-      Bajo la bendición de Dios, queremos compartir contigo
-      la alegría de comenzar esta nueva etapa de nuestras vidas.
-    </p>
-
-    <button class="boton-dorado" id="abrirInvitacion" type="button">
-      ♡ Abrir nuestra invitación ♡
-    </button>
-
-    <p class="nota-musica" id="notaMusica">
-      Hemos preparado este momento con mucho amor.
-    </p>
-  </div>
-</div>
-
+<!-- CORAZONES -->
 <div class="corazones" id="corazones" aria-hidden="true"></div>
 
+<!-- INVITACIÓN: SE MUESTRA AL ABRIR EL SOBRE -->
 <main id="invitacion">
 
   <!-- PRESENTACIÓN -->
   <section class="seccion">
     <div class="contenedor">
+
       <p class="etiqueta">Con la bendición de Dios</p>
+
       <h2>¡Nos casamos!</h2>
+
       <p class="promesa">Una promesa de amor</p>
+
       <div class="linea-dorada"></div>
 
       <p class="versiculo">
@@ -919,42 +798,53 @@ p { line-height: 1.8; }
         alt="Anillos que simbolizan nuestra unión"
         loading="lazy"
       >
+
     </div>
   </section>
 
   <!-- CUENTA REGRESIVA -->
   <section class="seccion cuenta-regresiva">
     <div class="contenedor">
+
       <p class="etiqueta">Cada vez falta menos</p>
+
       <h2>La cuenta regresiva</h2>
+
       <div class="linea-dorada"></div>
 
       <div class="reloj" aria-label="Cuenta regresiva para la boda">
+
         <div class="unidad-tiempo">
           <span class="numero" id="dias">000</span>
           <span class="unidad">Días</span>
         </div>
+
         <div class="unidad-tiempo">
           <span class="numero" id="horas">00</span>
           <span class="unidad">Horas</span>
         </div>
+
         <div class="unidad-tiempo">
           <span class="numero" id="minutos">00</span>
           <span class="unidad">Minutos</span>
         </div>
+
         <div class="unidad-tiempo">
           <span class="numero" id="segundos">00</span>
           <span class="unidad">Segundos</span>
         </div>
+
       </div>
 
       <p class="fecha-especial">12 · 12 · 2026</p>
+
     </div>
   </section>
 
   <!-- NUESTRO GRAN DÍA -->
   <section class="seccion">
     <div class="contenedor">
+
       <img
         class="foto-detalle"
         src="ZAPATOS.jpeg"
@@ -963,6 +853,7 @@ p { line-height: 1.8; }
       >
 
       <p class="etiqueta">Un día para recordar</p>
+
       <h2>Nuestro gran día</h2>
 
       <p class="versiculo">
@@ -974,33 +865,51 @@ p { line-height: 1.8; }
       <div class="linea-dorada"></div>
 
       <div class="eventos">
+
+        <!-- CEREMONIA RELIGIOSA -->
         <article class="tarjeta-evento">
+
           <span class="icono-evento" aria-hidden="true">♧</span>
+
           <p class="etiqueta">Ceremonia religiosa</p>
-          <h3>La ceremonia</h3>
+
           <p class="hora">3:00 p. m.</p>
-          <p class="lugar">Parroquia Señor de los Milagros de Samacá</p>
+
+          <p class="lugar">
+            Parroquia Señor de los Milagros de Samacá
+          </p>
+
           <p class="direccion">
             Capilla El Voto<br>
             Samacá, Boyacá
           </p>
+
         </article>
 
+        <!-- RECEPCIÓN -->
         <article class="tarjeta-evento">
+
           <span class="icono-evento" aria-hidden="true">✧</span>
+
           <p class="etiqueta">Celebremos juntos</p>
+
           <h3>Recepción</h3>
+
           <p class="lugar">Rancho Gran Gils</p>
+
           <p class="direccion">
             Vereda Churuvita<br>
             Samacá, Boyacá
           </p>
+
           <p>
             Después de la ceremonia,
             queremos compartir contigo
             esta alegría.
           </p>
+
         </article>
+
       </div>
 
       <p class="nota-invitados">
@@ -1008,12 +917,14 @@ p { line-height: 1.8; }
         más cercano; por ello, la invitación es válida únicamente
         para la(s) persona(s) a quien va dirigida.
       </p>
+
     </div>
   </section>
 
   <!-- LLUVIA DE SOBRES -->
   <section class="seccion regalos">
     <div class="contenedor">
+
       <img
         class="foto-corbatin"
         src="CORBAT%C3%8DN.jpeg"
@@ -1022,11 +933,14 @@ p { line-height: 1.8; }
       >
 
       <p class="etiqueta">Un gesto de cariño</p>
+
       <h2 class="titulo-regalos">Lluvia de sobres</h2>
+
       <p class="subtitulo-regalos">Un detalle de amor</p>
+
       <div class="linea-dorada"></div>
 
-      <div class="sobre" aria-hidden="true">♡</div>
+      <div class="simbolo-sobre" aria-hidden="true">♡</div>
 
       <p class="mensaje-regalo">
         Tu presencia y tus buenos deseos son el regalo
@@ -1034,20 +948,25 @@ p { line-height: 1.8; }
         un detalle adicional, recibiremos con gratitud
         tu lluvia de sobres.
       </p>
+
     </div>
   </section>
+
 </main>
 
-<!-- PIE DE PÁGINA -->
+<!-- FINAL -->
 <footer class="pie">
   <div class="contenedor">
+
     <p class="etiqueta">Con amor y gratitud</p>
 
-    <img src="ANILLOS.jpeg" alt="Nuestros anillos" loading="lazy">
+    <img
+      src="ANILLOS.jpeg"
+      alt="Nuestros anillos"
+      loading="lazy"
+    >
 
     <h2 class="nombres-pie">Edwin & Andrea</h2>
-    <p class="pie-fecha">12 DE DICIEMBRE DE 2026</p>
-    <p>Samacá, Boyacá</p>
 
     <div class="linea-dorada"></div>
 
@@ -1057,89 +976,55 @@ p { line-height: 1.8; }
     </p>
 
     <p class="dios-tu-y-yo">DIOS, TÚ Y YO</p>
+
   </div>
 </footer>
 
 <script>
-/* =====================================
-   ABRIR SOBRE Y MOSTRAR LA PORTADA
-===================================== */
+/* ===================================
+   ABRIR EL SOBRE Y MOSTRAR LA INVITACIÓN
+=================================== */
 
 const sobreIntro = document.getElementById("sobreIntro");
 const botonSello = document.getElementById("abrirSello");
 const instruccionSello = document.getElementById("instruccionSello");
-const portada = document.getElementById("entrada");
 const musica = document.getElementById("musica");
-const notaMusica = document.getElementById("notaMusica");
-const botonAbrir = document.getElementById("abrirInvitacion");
 
 let sobreAbierto = false;
 
 botonSello.addEventListener("click", function () {
   if (sobreAbierto) return;
+
   sobreAbierto = true;
 
   sobreIntro.classList.add("abriendo");
   instruccionSello.textContent = "Con cariño, Edwin & Andrea";
 
-  /*
-    Intentamos iniciar la música durante el toque del sello.
-    Algunos navegadores pueden bloquearla; por eso también
-    se intenta reproducir al pulsar el botón de la portada.
-  */
+  /* La música comienza al tocar el sello.
+     El navegador podría requerir interacción para reproducirla. */
+
   musica.volume = 0.7;
 
-  musica.play().then(function () {
-    notaMusica.textContent = "♪ Música de fondo";
-  }).catch(function () {
-    /* Se volverá a intentar al tocar el siguiente botón. */
+  musica.play().catch(function () {
+    /* La invitación funciona aunque la música no se inicie. */
   });
+
+  /* Se retira el sobre y queda visible la invitación completa. */
 
   setTimeout(function () {
     sobreIntro.classList.add("retirado");
-    portada.classList.remove("esperando");
     document.body.classList.remove("sin-scroll");
-  }, 1150);
+  }, 1250);
 
   setTimeout(function () {
     sobreIntro.style.display = "none";
-  }, 2050);
+  }, 2300);
 });
 
-/* =====================================
-   ABRIR LA INVITACIÓN COMPLETA
-===================================== */
-
-botonAbrir.addEventListener("click", function () {
-  portada.classList.add("oculta");
-  document.body.classList.remove("sin-scroll");
-
-  musica.volume = 0.7;
-
-  if (musica.paused) {
-    musica.play().then(function () {
-      notaMusica.textContent = "♪ Música de fondo";
-    }).catch(function () {
-      notaMusica.textContent =
-        "No se pudo cargar la música. Verifica el archivo MP3 en GitHub.";
-    });
-  } else {
-    notaMusica.textContent = "♪ Música de fondo";
-  }
-
-  setTimeout(function () {
-    portada.style.display = "none";
-    document.getElementById("invitacion").scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-  }, 500);
-});
-
-/* =====================================
+/* ===================================
    CUENTA REGRESIVA
    12 DE DICIEMBRE DE 2026, 3:00 P. M.
-===================================== */
+=================================== */
 
 const fechaBoda = new Date("2026-12-12T15:00:00-05:00").getTime();
 
@@ -1169,14 +1054,15 @@ function actualizarCuenta() {
 actualizarCuenta();
 setInterval(actualizarCuenta, 1000);
 
-/* =====================================
+/* ===================================
    LLUVIA DE CORAZONES DORADOS
-===================================== */
+=================================== */
 
 const contenedorCorazones = document.getElementById("corazones");
 
 for (let i = 0; i < 22; i++) {
   const corazon = document.createElement("span");
+
   corazon.className = "corazon";
   corazon.textContent = Math.random() > 0.5 ? "♡" : "♥";
 
