@@ -2,786 +2,950 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#101b31">
-<meta name="description" content="Invitación de boda de Edwin y Andrea, 12 de diciembre de 2026, Samacá, Boyacá.">
-<title>Edwin & Andrea | Nuestra boda</title>
-
-<style>
-:root {
-  --azul: #101b31;
-  --azul2: #293b59;
-  --marfil: #fbf7ef;
-  --dorado: #c6a15b;
-  --oro-claro: #e4ce9b;
-  --tinta: #413629;
-}
-
-* { box-sizing: border-box; }
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 20px;
-}
-
-body {
-  margin: 0;
-  background: var(--marfil);
-  color: var(--tinta);
-  font-family: Georgia, "Times New Roman", serif;
-  text-align: center;
-  overflow-x: hidden;
-}
-
-img { max-width: 100%; }
-
-.sobre {
-  font: 10px Arial, sans-serif;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-}
-
-.dorado { color: var(--dorado); }
-
-h1 {
-  font-size: clamp(42px, 10vw, 76px);
-  font-weight: normal;
-  line-height: 1.05;
-  margin: 18px 0;
-}
-
-h2 {
-  color: var(--azul);
-  font-size: clamp(27px, 6vw, 38px);
-  font-weight: normal;
-  margin: 15px 0;
-}
-
-p { line-height: 1.8; }
-
-.fecha {
-  font: 13px Arial, sans-serif;
-  letter-spacing: 3px;
-}
-
-.boton, button {
-  display: inline-block;
-  padding: 13px 22px;
-  border: 1px solid var(--dorado);
-  border-radius: 30px;
-  background: transparent;
-  color: inherit;
-  font: 14px Georgia, serif;
-  text-decoration: none;
-  cursor: pointer;
-  margin: 8px;
-  transition: transform .25s, background .25s;
-}
-
-.boton:hover, button:hover {
-  transform: translateY(-2px);
-}
-
-.boton-dorado {
-  background: var(--dorado);
-  color: var(--azul);
-}
-
-.portada {
-  min-height: 100svh;
-  padding: 55px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-  background: radial-gradient(ellipse at center, #344663, var(--azul) 75%);
-  color: var(--marfil);
-}
-
-.portada::before, .portada::after {
-  content: "✧ · ✦ · ✧";
-  position: absolute;
-  color: var(--oro-claro);
-  letter-spacing: 12px;
-  opacity: .65;
-  animation: brillar 4s ease-in-out infinite;
-  pointer-events: none;
-}
-
-.portada::before { top: 5%; left: 4%; }
-.portada::after { bottom: 5%; right: 3%; }
-
-.seccion {
-  padding: 48px 20px;
-  max-width: 800px;
-  margin: auto;
-}
-
-.detalles {
-  background: #f0e7d8;
-  padding: 45px 20px;
-}
-
-.argollas {
-  font-size: clamp(45px, 12vw, 70px);
-  color: var(--dorado);
-  display: inline-block;
-  animation: flotar 3s ease-in-out infinite;
-  filter: drop-shadow(0 5px 12px #0002);
-}
-
-/* FOTO DE PORTADA Y TRES CÍRCULOS DORADOS */
-.marco-novios {
-  width: min(320px, 78vw);
-  aspect-ratio: 4 / 5;
-  position: relative;
-  margin: 20px auto 25px;
-  display: grid;
-  place-items: center;
-  isolation: isolate;
-}
-
-.marco-novios img {
-  width: 85%;
-  height: 88%;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 48% 48% 45% 45%;
-  position: relative;
-  z-index: 1;
-  box-shadow: 0 10px 30px #0005;
-}
-
-.aro {
-  position: absolute;
-  inset: 3%;
-  border: 1px solid var(--dorado);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.aro-1 { transform: rotate(-8deg) scaleX(1.04); }
-
-.aro-2 {
-  inset: 0;
-  transform: rotate(7deg) scaleX(1.02);
-  border-color: var(--oro-claro);
-}
-
-.aro-3 {
-  inset: 6%;
-  transform: rotate(2deg) scaleX(1.07);
-  border-color: var(--dorado);
-  opacity: .75;
-}
-
-.destello {
-  position: absolute;
-  color: var(--dorado);
-  z-index: 2;
-  font-size: 26px;
-  animation: brillar 3s ease-in-out infinite;
-  pointer-events: none;
-}
-
-.destello-1 { top: 12%; right: 1%; }
-.destello-2 { bottom: 17%; left: 0; font-size: 19px; }
-.destello-3 { top: 28%; left: 2%; font-size: 14px; }
-
-/* FOTOGRAFÍAS */
-.foto-seccion {
-  display: block;
-  width: min(100%, 440px);
-  max-height: 430px;
-  object-fit: cover;
-  margin: 24px auto;
-  border: 1px solid var(--dorado);
-  border-radius: 15px;
-  box-shadow: 0 7px 24px #101b3115;
-}
-
-.foto-anillos {
-  width: min(300px, 75vw);
-  height: 200px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 1px solid var(--dorado);
-  box-shadow: 0 0 0 5px #c6a15b15, 0 0 20px #c6a15b20;
-}
-
-.destellos-anillos {
-  color: var(--dorado);
-  font-size: 22px;
-  letter-spacing: 12px;
-  margin: 12px auto;
-  animation: brillar 3s ease-in-out infinite;
-}
-
-.separador {
-  color: var(--dorado);
-  font-size: 23px;
-  margin: 25px auto;
-}
-
-/* CUENTA REGRESIVA */
-.cuenta {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px;
-  max-width: 540px;
-  margin: 25px auto;
-}
-
-.caja {
-  padding: 15px 3px;
-  background: white;
-  border: 1px solid #e5d8bc;
-  border-radius: 10px;
-}
-
-.numero {
-  display: block;
-  font-size: clamp(22px, 5vw, 36px);
-  color: var(--azul);
-}
-
-.etiqueta {
-  font: 10px Arial, sans-serif;
-  letter-spacing: 1px;
-}
-
-/* ECLESIASTÉS */
-.versiculo {
-  background: var(--azul);
-  color: var(--marfil);
-  padding: 45px 22px;
-}
-
-.versiculo h2 { color: var(--oro-claro); }
-
-.versiculo .cita {
-  max-width: 650px;
-  margin: 20px auto;
-}
-
-.cita {
-  font-size: 17px;
-  line-height: 1.9;
-  font-style: italic;
-}
-
-.destacado {
-  color: var(--oro-claro);
-  letter-spacing: 4px;
-  font-size: 18px;
-  margin-top: 28px;
-}
-
-/* ICONOS DE LÍNEA DORADA */
-.icono-evento {
-  width: 75px;
-  height: 75px;
-  display: block;
-  margin: 0 auto 14px;
-  color: var(--dorado);
-}
-
-.icono-evento svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.eventos {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  max-width: 850px;
-  margin: 30px auto 10px;
-}
-
-.evento {
-  padding: 16px 14px;
-  min-width: 0;
-}
-
-.evento + .evento {
-  border-left: 1px solid var(--dorado);
-}
-
-.evento-titulo {
-  font: 10px Arial, sans-serif;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #86652e;
-  margin: 12px 0;
-}
-
-.evento p {
-  margin: 7px 0;
-  line-height: 1.65;
-  overflow-wrap: anywhere;
-}
-
-.evento .hora { font-size: 14px; }
-
-.nota {
-  max-width: 600px;
-  margin: 20px auto;
-  font-size: 14px;
-}
-
-footer {
-  padding: 35px 20px;
-  background: var(--azul);
-  color: var(--marfil);
-}
-
-.foto-footer {
-  width: min(230px, 70vw);
-  height: 160px;
-  object-fit: cover;
-  border: 1px solid var(--dorado);
-  border-radius: 50%;
-  box-shadow: 0 0 0 5px #c6a15b18;
-}
-
-/* LLUVIA CONTINUA DE PEQUEÑOS CORAZONES DORADOS */
-.lluvia-corazones {
-  position: fixed;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 20;
-}
-
-.corazon-dorado {
-  position: absolute;
-  top: -35px;
-  color: #e2bd70;
-  text-shadow: 0 0 6px #e2bd7050;
-  opacity: 0;
-  line-height: 1;
-  animation: caer-corazon linear infinite;
-  will-change: transform, opacity;
-}
-
-@keyframes caer-corazon {
-  0% {
-    transform: translate3d(0, -30px, 0) rotate(0deg);
-    opacity: 0;
-  }
-  10% { opacity: .85; }
-  85% { opacity: .7; }
-  100% {
-    transform: translate3d(35px, 110vh, 0) rotate(35deg);
-    opacity: 0;
-  }
-}
-
-/* PANTALLA INICIAL */
-#pantallaEntrada {
-  position: fixed;
-  z-index: 10;
-  inset: 0;
-  padding: 24px 18px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow-y: auto;
-  background: radial-gradient(ellipse at center, #344663, #101b31 75%);
-  color: var(--marfil);
-  transition: opacity .8s, visibility .8s;
-}
-
-#pantallaEntrada.cerrada {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-#pantallaEntrada .marco-novios {
-  width: min(260px, 66vw);
-  margin: 14px auto;
-}
-
-#pantallaEntrada .marco-novios img {
-  width: 84%;
-  height: 88%;
-}
-
-#pantallaEntrada p {
-  max-width: 440px;
-  margin: 8px auto 14px;
-}
-
-/* REPRODUCTOR DE MÚSICA */
-#reproductorBoda {
-  position: fixed;
-  width: 1px;
-  height: 1px;
-  left: -10px;
-  bottom: 0;
-  opacity: .01;
-  pointer-events: none;
-}
-
-@keyframes flotar {
-  0%,100% { transform: translateY(0) rotate(-2deg); }
-  50% { transform: translateY(-9px) rotate(2deg); }
-}
-
-@keyframes brillar {
-  0%,100% { opacity: .4; }
-  50% { opacity: 1; }
-}
-
-@media (max-width: 600px) {
-  .eventos { grid-template-columns: 1fr; }
-  .evento { padding: 24px 12px; }
-
-  .evento + .evento {
-    border-left: none;
-    border-top: 1px solid #c6a15b70;
-  }
-
-  .icono-evento { width: 68px; height: 68px; }
-  .foto-seccion { max-height: 360px; }
-  .cita { font-size: 16px; }
-}
-
-@media (max-width: 380px) {
-  .cuenta { gap: 4px; }
-  .caja { padding: 12px 1px; }
-  .etiqueta { font-size: 8px; letter-spacing: 0; }
-  .sobre { letter-spacing: 2px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation: none !important;
-    scroll-behavior: auto !important;
-  }
-
-  .corazon-dorado { display: none; }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101b31">
+
+  <title>Edwin & Andrea | Nuestra boda</title>
+
+  <style>
+    :root {
+      --azul: #101b31;
+      --azul-claro: #192844;
+      --dorado: #c7a45b;
+      --oro-claro: #f0dba5;
+      --marfil: #fff9ed;
+      --texto: #e9e2d3;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--azul);
+      color: var(--marfil);
+      font-family: Georgia, "Times New Roman", serif;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    body.sin-scroll {
+      overflow: hidden;
+    }
+
+    h1, h2, h3, p {
+      margin-top: 0;
+    }
+
+    h1, h2 {
+      font-weight: normal;
+    }
+
+    h2 {
+      color: var(--oro-claro);
+      font-size: clamp(25px, 5vw, 37px);
+      margin-bottom: 20px;
+    }
+
+    p {
+      line-height: 1.8;
+    }
+
+    section {
+      position: relative;
+      padding: 75px 20px;
+      overflow: hidden;
+    }
+
+    .contenido {
+      width: min(100%, 850px);
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .sobre {
+      color: var(--dorado);
+      font-size: 13px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .linea {
+      width: 90px;
+      height: 1px;
+      margin: 22px auto;
+      background: var(--dorado);
+    }
+
+    .boton {
+      display: inline-block;
+      background: var(--dorado);
+      color: var(--azul);
+      text-decoration: none;
+      padding: 14px 25px;
+      border-radius: 30px;
+      border: 1px solid var(--dorado);
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: .25s;
+    }
+
+    .boton:hover {
+      background: var(--oro-claro);
+      transform: translateY(-2px);
+    }
+
+    /* PORTADA */
+
+    .portada {
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 55px 20px;
+      background:
+        radial-gradient(ellipse at top, #293b59 0%, transparent 65%),
+        linear-gradient(180deg, #101b31, #0b1425);
+    }
+
+    .portada::before,
+    .portada::after {
+      content: "";
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      border: 1px solid rgba(199,164,91,.2);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .portada::before {
+      top: -150px;
+      left: -120px;
+    }
+
+    .portada::after {
+      right: -150px;
+      bottom: -140px;
+    }
+
+    .nombres-portada {
+      color: var(--oro-claro);
+      font-size: clamp(39px, 8vw, 72px);
+      line-height: 1.2;
+      margin: 22px 0 10px;
+    }
+
+    .ampersand {
+      color: var(--dorado);
+      font-style: italic;
+    }
+
+    .frase-portada {
+      color: var(--texto);
+      font-size: 16px;
+      max-width: 510px;
+      margin: 18px auto 25px;
+    }
+
+    .fecha-portada {
+      color: var(--oro-claro);
+      font-size: 13px;
+      letter-spacing: 3px;
+      margin-bottom: 28px;
+    }
+
+    /* FOTOGRAFÍAS */
+
+    .foto-circular {
+      width: min(66vw, 310px);
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 50%;
+      padding: 8px;
+      border: 1px solid var(--dorado);
+      outline: 1px solid rgba(199,164,91,.45);
+      outline-offset: 7px;
+      box-shadow: 0 0 35px rgba(199,164,91,.12);
+    }
+
+    .foto-seccion {
+      display: block;
+      width: min(100%, 330px);
+      max-height: 360px;
+      object-fit: contain;
+      margin: 0 auto 25px;
+      border-radius: 12px;
+    }
+
+    .foto-anillos {
+      width: min(100%, 290px);
+      max-height: 300px;
+      object-fit: contain;
+      margin: 25px auto 0;
+      display: block;
+      border-radius: 12px;
+    }
+
+    .foto-corbata {
+      width: min(100%, 250px);
+      max-height: 300px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 24px;
+      border-radius: 12px;
+    }
+
+    /* INVITACIÓN DE ENTRADA */
+
+    .entrada {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 25px 18px;
+      background:
+        radial-gradient(ellipse at center, #233552 0%, #101b31 65%, #091120 100%);
+      transition: opacity .8s ease, visibility .8s ease;
+    }
+
+    .entrada.oculta {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .entrada-contenido {
+      width: min(100%, 560px);
+      position: relative;
+    }
+
+    .entrada-etiqueta {
+      color: var(--oro-claro);
+      font-size: 12px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .marco-novios {
+      width: min(68vw, 300px);
+      aspect-ratio: 1 / 1.1;
+      margin: 0 auto 25px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .marco-novios img {
+      width: 86%;
+      height: 90%;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 1px solid var(--dorado);
+      padding: 6px;
+    }
+
+    .aro {
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(240,219,165,.8);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .aro-dos {
+      inset: 8px -5px;
+      transform: rotate(-8deg);
+    }
+
+    .aro-tres {
+      inset: -5px 8px;
+      transform: rotate(8deg);
+      border-color: rgba(199,164,91,.5);
+    }
+
+    .destello {
+      position: absolute;
+      color: var(--oro-claro);
+      font-size: 23px;
+      animation: brillar 2s infinite alternate;
+    }
+
+    .destello.uno {
+      top: 5%;
+      right: 2%;
+    }
+
+    .destello.dos {
+      bottom: 10%;
+      left: 0;
+      animation-delay: .7s;
+    }
+
+    @keyframes brillar {
+      from { opacity: .35; transform: scale(.8); }
+      to { opacity: 1; transform: scale(1.15); }
+    }
+
+    .entrada h1 {
+      color: var(--oro-claro);
+      font-size: clamp(35px, 8vw, 57px);
+      line-height: 1.15;
+      margin: 8px 0 25px;
+    }
+
+    .entrada p {
+      color: var(--texto);
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+
+    /* LLUVIA DE CORAZONES */
+
+    .lluvia-corazones {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 20;
+    }
+
+    .corazon {
+      position: absolute;
+      top: -30px;
+      color: var(--dorado);
+      opacity: .5;
+      animation: caer linear forwards;
+      text-shadow: 0 0 8px rgba(199,164,91,.25);
+    }
+
+    @keyframes caer {
+      0% {
+        transform: translateY(-20px) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: .55;
+      }
+      90% {
+        opacity: .4;
+      }
+      100% {
+        transform: translateY(110vh) rotate(270deg);
+        opacity: 0;
+      }
+    }
+
+    /* PROMESA */
+
+    .promesa {
+      background: linear-gradient(180deg, #101b31, #172640);
+    }
+
+    .sobre-nos-casamos {
+      font-size: clamp(27px, 6vw, 39px);
+      letter-spacing: 4px;
+      color: var(--dorado);
+      margin-bottom: 12px;
+    }
+
+    .titulo-promesa {
+      font-size: clamp(23px, 4.5vw, 30px);
+      margin-bottom: 20px;
+    }
+
+    .versiculo {
+      max-width: 650px;
+      margin: 25px auto 0;
+      color: var(--texto);
+      font-size: 17px;
+      font-style: italic;
+    }
+
+    .cita {
+      color: var(--dorado);
+      font-size: 12px;
+      letter-spacing: 2px;
+      margin-top: 18px;
+    }
+
+    /* CUENTA REGRESIVA */
+
+    .cuenta {
+      background: #0c1628;
+    }
+
+    .contador {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 600px;
+      margin: 30px auto 0;
+    }
+
+    .unidad {
+      padding: 20px 8px;
+      border: 1px solid rgba(199,164,91,.5);
+      border-radius: 12px;
+      background: rgba(255,255,255,.025);
+    }
+
+    .numero {
+      color: var(--oro-claro);
+      display: block;
+      font-size: clamp(27px, 6vw, 43px);
+      margin-bottom: 8px;
+    }
+
+    .unidad span:last-child {
+      color: var(--texto);
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* NUESTRO GRAN DÍA */
+
+    .detalles {
+      background: linear-gradient(180deg, #172640, #101b31);
+    }
+
+    .eventos {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 35px;
+    }
+
+    .evento {
+      border: 1px solid rgba(199,164,91,.5);
+      border-radius: 16px;
+      padding: 28px 18px;
+      background: rgba(255,255,255,.025);
+    }
+
+    .icono-evento {
+      width: 65px;
+      height: 65px;
+      margin: 0 auto 18px;
+      display: block;
+      color: var(--dorado);
+    }
+
+    .evento-titulo {
+      color: var(--oro-claro);
+      font-size: 22px;
+      margin-bottom: 14px;
+    }
+
+    .evento p {
+      color: var(--texto);
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+
+    .evento strong {
+      color: var(--oro-claro);
+      font-weight: normal;
+    }
+
+    .nota-evento {
+      font-size: 13px !important;
+      color: #c9c2b5 !important;
+    }
+
+    /* LLUVIA DE SOBRES */
+
+    .sobres {
+      background:
+        radial-gradient(ellipse at top, #283954 0%, transparent 65%),
+        #101b31;
+    }
+
+    .titulo-sobres {
+      color: var(--oro-claro);
+      font-size: clamp(30px, 6.5vw, 43px);
+      letter-spacing: 3px;
+      margin: 18px 0 10px;
+    }
+
+    .subtitulo-sobres {
+      color: #fff9ed;
+      font-size: clamp(18px, 4vw, 24px);
+      margin-top: 8px;
+    }
+
+    .sobre-icono {
+      color: var(--dorado);
+      font-size: 42px;
+      margin: 15px 0;
+    }
+
+    .texto-sobres {
+      color: var(--texto);
+      max-width: 570px;
+      margin: 0 auto;
+    }
+
+    .nota-invitados {
+      color: #d7d0c3;
+      font-size: 13px;
+      max-width: 620px;
+      margin: 30px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid rgba(199,164,91,.35);
+    }
+
+    /* PIE DE PÁGINA */
+
+    footer {
+      background: #091120;
+      padding: 45px 20px 55px;
+    }
+
+    footer .nombres {
+      color: var(--oro-claro);
+      font-size: clamp(28px, 6vw, 42px);
+      margin-bottom: 12px;
+    }
+
+    footer p {
+      color: var(--texto);
+      font-size: 13px;
+    }
+
+    .pie-frase {
+      color: var(--dorado);
+      letter-spacing: 3px;
+      font-size: 11px;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 600px) {
+      section {
+        padding: 58px 17px;
+      }
+
+      .eventos {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .evento {
+        padding: 25px 18px;
+      }
+
+      .contador {
+        gap: 7px;
+      }
+
+      .unidad {
+        padding: 16px 3px;
+      }
+
+      .unidad span:last-child {
+        font-size: 9px;
+        letter-spacing: 1px;
+      }
+
+      .frase-portada {
+        font-size: 14px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
 </head>
 
-<body>
+<body class="sin-scroll">
 
-<!-- LA LLUVIA DE CORAZONES CUBRE TODA LA INVITACIÓN -->
-<div class="lluvia-corazones" id="lluviaCorazones"
-     aria-hidden="true"></div>
+  <!-- LLUVIA DE CORAZONES DORADOS -->
+  <div class="lluvia-corazones" id="lluviaCorazones" aria-hidden="true"></div>
 
-<!-- PORTADA: FOTO DE LOS NOVIOS -->
-<div id="pantallaEntrada">
-  <div class="sobre dorado">Con la bendición de Dios</div>
+  <!-- PANTALLA DE ENTRADA -->
+  <div class="entrada" id="entrada">
+    <div class="entrada-contenido">
+      <div class="entrada-etiqueta">Una promesa de amor</div>
 
-  <div class="marco-novios">
-    <span class="aro aro-1"></span>
-    <span class="aro aro-2"></span>
-    <span class="aro aro-3"></span>
+      <div class="marco-novios">
+        <img src="NOVIOS2.0.jpeg"
+             alt="Fotografía de Edwin y Andrea">
 
-    <img src="NOVIOS2.0.jpeg"
-         alt="Edwin y Andrea, nuestra historia de amor">
+        <div class="aro"></div>
+        <div class="aro aro-dos"></div>
+        <div class="aro aro-tres"></div>
 
-    <span class="destello destello-1">✧</span>
-    <span class="destello destello-2">✦</span>
-    <span class="destello destello-3">✧</span>
-  </div>
+        <span class="destello uno">✧</span>
+        <span class="destello dos">✦</span>
+      </div>
 
-  <h1>Edwin <span class="dorado">&</span><br>Andrea</h1>
-  <div class="fecha dorado">12 · DICIEMBRE · 2026</div>
-  <p>Dos tierras diferentes, pero el amor nos une.</p>
+      <h1>Edwin <span class="ampersand">&</span> Andrea</h1>
 
-  <button class="boton-dorado" id="abrirInvitacion">
-    💌 Abrir nuestra invitación
-  </button>
+      <p>
+        Bajo la bendición de Dios, queremos compartir contigo
+        uno de los días más especiales de nuestras vidas.
+      </p>
 
-  <p style="font-size:12px">Una historia de amor bajo la bendición de Dios.</p>
-</div>
-
-<header class="portada" id="inicio">
-  <div class="sobre dorado">Con la bendición de Dios</div>
-  <div class="argollas" aria-hidden="true">♡</div>
-
-  <h1>Edwin <span class="dorado">&</span><br>Andrea</h1>
-  <div class="fecha dorado">12 · DICIEMBRE · 2026</div>
-
-  <p>Porque las mejores historias se celebran en familia y con amigos, queremos que hagan parte de nuestro gran día.</p>
-
-  <a class="boton" href="#invitacion">Descubre nuestra invitación ↓</a>
-</header>
-
-<main id="invitacion">
-
-<!-- PROMESA DE AMOR Y ANILLOS -->
-<section class="seccion">
-  <div class="sobre">¡Nos casamos!</div>
-  <h2>Una promesa de amor</h2>
-
-  <p>Dios ha acompañado nuestra historia y hoy ponemos nuestro amor en sus manos, uniendo nuestras vidas ante su altar. Nos hará muy felices compartir contigo este momento tan especial.</p>
-
-  <div class="separador">✧ ─── ♡ ─── ✧</div>
-
-  <img src="ANILLOS.jpeg"
-       alt="Nuestros anillos de matrimonio"
-       class="foto-seccion foto-anillos">
-
-  <div class="destellos-anillos" aria-hidden="true">✧ · ✦ · ✧</div>
-
-  <div class="sobre">Nuestra cuenta regresiva</div>
-
-  <div class="cuenta">
-    <div class="caja">
-      <span class="numero" id="dias">0</span>
-      <span class="etiqueta">DÍAS</span>
-    </div>
-    <div class="caja">
-      <span class="numero" id="horas">0</span>
-      <span class="etiqueta">HORAS</span>
-    </div>
-    <div class="caja">
-      <span class="numero" id="minutos">0</span>
-      <span class="etiqueta">MINUTOS</span>
-    </div>
-    <div class="caja">
-      <span class="numero" id="segundos">0</span>
-      <span class="etiqueta">SEGUNDOS</span>
+      <button class="boton" id="abrirInvitacion" type="button">
+        💌 Abrir nuestra invitación
+      </button>
     </div>
   </div>
 
-  <p id="mensaje">12 de diciembre de 2026 · Samacá, Boyacá</p>
-</section>
+  <!-- MÚSICA: SE INTENTA INICIAR AL ABRIR LA INVITACIÓN -->
+  <iframe
+    id="musica"
+    title="Música de nuestra invitación"
+    width="0"
+    height="0"
+    src=""
+    allow="autoplay; encrypted-media"
+    referrerpolicy="strict-origin-when-cross-origin"
+    style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none"
+    aria-hidden="true">
+  </iframe>
 
-<!-- ECLESIASTÉS RESUMIDO -->
-<section class="versiculo">
-  <div class="sobre dorado">Una bendición para nuestro amor</div>
-  <h2>Eclesiastés 4:9-12</h2>
+  <main>
 
-  <p class="cita">“Mejores son dos que uno, porque tienen mejor recompensa por su trabajo. Si uno cae, el otro lo levanta. Y si alguien prevalece contra uno, dos le resistirán. La cuerda de tres hilos no se rompe fácilmente”.</p>
+    <!-- PORTADA -->
+    <section class="portada" id="inicio">
+      <div class="contenido">
+        <div class="sobre">Con la bendición de Dios</div>
 
-  <div class="destacado">DIOS, TÚ Y YO ♡</div>
-</section>
+        <h1 class="nombres-portada">
+          Edwin <span class="ampersand">&</span> Andrea
+        </h1>
 
-<!-- NUESTRO GRAN DÍA -->
-<section class="detalles">
-  <div class="sobre">Reserva la fecha</div>
-  <h2>Nuestro gran día</h2>
+        <div class="linea"></div>
 
-  <div class="eventos">
+        <p class="frase-portada">
+          Nos llena de alegría invitarte a celebrar
+          el comienzo de esta nueva etapa de nuestro amor.
+        </p>
 
-    <!-- CALENDARIO -->
-    <article class="evento">
-      <div class="icono-evento" aria-hidden="true">
-        <svg viewBox="0 0 80 80" fill="none"
-             stroke="currentColor" stroke-width="1.7"
-             stroke-linecap="round" stroke-linejoin="round">
-          <rect x="12" y="17" width="56" height="52" rx="5"/>
-          <path d="M12 30H68"/>
-          <path d="M25 10V23M55 10V23"/>
-          <path d="M25 40H30M40 40H45M55 40H60"/>
-          <path d="M25 50H30M55 50H60"/>
-          <path d="M40 48C35 41 27 48 40 58C53 48 45 41 40 48Z"/>
-        </svg>
+        <p class="fecha-portada">SÁBADO · 12 DE DICIEMBRE · 2026</p>
+
+        <a class="boton" href="#invitacion">Conoce los detalles ↓</a>
       </div>
+    </section>
 
-      <div class="evento-titulo">Fecha</div>
-      <p>12 de diciembre de 2026</p>
-    </article>
+    <!-- UNA PROMESA DE AMOR -->
+    <section class="promesa" id="invitacion">
+      <div class="contenido">
 
-    <!-- CAPILLA -->
-    <article class="evento">
-      <div class="icono-evento" aria-hidden="true">
-        <svg viewBox="0 0 80 80" fill="none"
-             stroke="currentColor" stroke-width="1.7"
-             stroke-linecap="round" stroke-linejoin="round">
-          <path d="M40 7V19M34 13H46"/>
-          <path d="M14 36L40 18L66 36"/>
-          <path d="M20 34V69H60V34"/>
-          <path d="M34 69V53A6 6 0 0 1 46 53V69"/>
-          <circle cx="40" cy="38" r="5"/>
-          <path d="M10 69H70"/>
-          <path d="M27 46H29M51 46H53"/>
-        </svg>
+        <div class="sobre sobre-nos-casamos">¡Nos casamos!</div>
+
+        <h2 class="titulo-promesa">Una promesa de amor</h2>
+
+        <div class="linea"></div>
+
+        <p class="versiculo">
+          “Mejores son dos que uno, porque tienen mejor recompensa
+          por su trabajo. Si uno cae, el otro lo levanta. Y si alguien
+          prevalece contra uno, dos le resistirán.
+          La cuerda de tres hilos no se rompe fácilmente”.
+        </p>
+
+        <div class="cita">ECLESIASTÉS 4:9-12</div>
+
+        <img
+          src="ANILLOS.jpeg"
+          alt="Los anillos que simbolizan nuestra unión"
+          class="foto-anillos">
       </div>
+    </section>
 
-      <div class="evento-titulo">Ceremonia religiosa</div>
-      <p>Parroquia Señor de los Milagros de Samacá</p>
-      <p>Capilla El Voto</p>
-      <p class="hora">3:00 p. m.</p>
-    </article>
+    <!-- CUENTA REGRESIVA -->
+    <section class="cuenta">
+      <div class="contenido">
+        <div class="sobre">La cuenta regresiva comienza</div>
+        <h2>Falta muy poco</h2>
 
-    <!-- CELEBRACIÓN, FLORES Y DESTELLOS -->
-    <article class="evento">
-      <div class="icono-evento" aria-hidden="true">
-        <svg viewBox="0 0 80 80" fill="none"
-             stroke="currentColor" stroke-width="1.6"
-             stroke-linecap="round" stroke-linejoin="round">
-          <path d="M9 30Q40 3 71 30"/>
-          <path d="M12 29V54M68 29V54M12 54H68"/>
-          <path d="M24 20L27 25M40 14V22M56 20L53 25"/>
-          <circle cx="27" cy="29" r="1.7"/>
-          <circle cx="40" cy="24" r="1.7"/>
-          <circle cx="53" cy="29" r="1.7"/>
+        <div class="linea"></div>
 
-          <path d="M18 68V48M18 58L11 53M18 62L25 55"/>
-          <circle cx="18" cy="43" r="4"/>
-          <path d="M18 35V31M10 43H6M26 43H30M12 37L9 34M24 37L27 34"/>
-          <path d="M10 68L18 61L26 68Z"/>
+        <div class="contador" aria-label="Cuenta regresiva para nuestra boda">
+          <div class="unidad">
+            <span class="numero" id="dias">000</span>
+            <span>Días</span>
+          </div>
 
-          <path d="M62 68V48M62 58L55 53M62 62L69 55"/>
-          <circle cx="62" cy="43" r="4"/>
-          <path d="M62 35V31M54 43H50M70 43H74M56 37L53 34M68 37L71 34"/>
-          <path d="M54 68L62 61L70 68Z"/>
+          <div class="unidad">
+            <span class="numero" id="horas">00</span>
+            <span>Horas</span>
+          </div>
 
-          <path d="M40 34V40M37 37H43"/>
-          <path d="M35 30L33 28M45 30L47 28"/>
-          <path d="M40 43L38 46M40 43L42 46"/>
-          <path d="M32 49L29 49M48 49L51 49"/>
-        </svg>
+          <div class="unidad">
+            <span class="numero" id="minutos">00</span>
+            <span>Minutos</span>
+          </div>
+
+          <div class="unidad">
+            <span class="numero" id="segundos">00</span>
+            <span>Segundos</span>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="evento-titulo">Celebración</div>
-      <p>Rancho Gran Gils</p>
-      <p>Vereda Churuvita, Samacá</p>
-    </article>
+    <!-- NUESTRO GRAN DÍA -->
+    <section class="detalles">
+      <div class="contenido">
 
-  </div>
+        <img
+          src="ZAPATOS.jpeg"
+          alt="Los zapatos elegidos para nuestro gran día"
+          class="foto-seccion">
 
-  <div class="separador">✧ ─── ♡ ─── ✧</div>
-</section>
+        <h2>Nuestro gran día</h2>
 
-<!-- LLUVIA DE SOBRES -->
-<section class="versiculo">
-  <img src="CORBAT%C3%8DN.jpeg"
-       alt="El corbatín elegido para nuestro gran día"
-       class="foto-seccion">
+        <div class="linea"></div>
 
-  <div class="sobre dorado">Lluvia de sobres</div>
-  <h2 style="color:#fff9ed">Un detalle de amor</h2>
+        <p>
+          Nos encantaría que nos acompañaras a celebrar
+          este momento tan especial.
+        </p>
 
-  <p>Tu presencia es el mejor regalo. Si deseas contribuir a nuestro futuro, puedes hacerlo a través de una lluvia de sobres. ¡Gracias por acompañarnos y ser parte de nuestra historia!</p>
+        <div class="eventos">
 
-  <div class="separador">✧ ♡ ✧</div>
-</section>
+          <!-- CEREMONIA -->
+          <article class="evento">
 
-<!-- MENSAJE PARA LOS INVITADOS -->
-<section class="seccion">
-  <div class="argollas" aria-hidden="true">♡</div>
-  <h2>Con cariño, para ti</h2>
+            <svg class="icono-evento"
+                 viewBox="0 0 100 100"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="1.6"
+                 stroke-linecap="round"
+                 stroke-linejoin="round"
+                 aria-hidden="true">
+              <path d="M18 83h64"/>
+              <path d="M25 83V45h50v38"/>
+              <path d="M20 45L50 25l30 20"/>
+              <path d="M43 25V14h14v11"/>
+              <path d="M50 8v10M45 13h10"/>
+              <path d="M39 83V62a11 11 0 0 1 22 0v21"/>
+              <path d="M30 53h8M62 53h8"/>
+              <path d="M13 83v-7M87 83v-7"/>
+              <path d="M10 76h10M80 76h10"/>
+              <path d="M35 37l-3 3M65 37l3 3"/>
+            </svg>
 
-  <p class="nota">Queremos compartir este momento con nuestro círculo más cercano; por ello, la invitación es válida únicamente para la(s) persona(s) a quien va dirigida.</p>
+            <div class="evento-titulo">Ceremonia religiosa</div>
 
-  <p>Gracias por comprender y por celebrar con nosotros este día tan especial.</p>
-</section>
+            <p>
+              <strong>Parroquia Señor de los Milagros de Samacá</strong>
+            </p>
 
-</main>
+            <p>Capilla El Voto</p>
 
-<!-- DESPEDIDA -->
-<footer>
-  <img src="ANILLOS.jpeg"
-       alt="Nuestros anillos, símbolo de nuestra unión"
-       class="foto-footer">
+            <p><strong>3:00 p. m.</strong></p>
 
-  <p>Con amor y la bendición de Dios</p>
-  <div class="dorado" style="font-size:30px">Edwin & Andrea</div>
-  <p>12 · 12 · 2026</p>
-  <p class="dorado">DIOS, TÚ Y YO</p>
-  <div class="destellos-anillos">✧ · ♡ · ✧</div>
-</footer>
+            <p class="nota-evento">
+              Uniremos nuestras vidas ante Dios,
+              acompañados de las personas que amamos.
+            </p>
+          </article>
 
-<!-- REPRODUCTOR DE MÚSICA -->
-<iframe
-  id="reproductorBoda"
-  title="Música de nuestra invitación"
-  width="1"
-  height="1"
-  style="position:fixed;left:-10px;bottom:0;opacity:.01;pointer-events:none"
-  src="about:blank"
-  allow="autoplay; encrypted-media">
-</iframe>
+          <!-- RECEPCIÓN -->
+          <article class="evento">
 
-<script>
-/* LLUVIA CONTINUA DE CORAZONES DORADOS */
-(function crearLluviaDeCorazones() {
-  const contenedor = document.getElementById("lluviaCorazones");
-  if (!contenedor) return;
+            <svg class="icono-evento"
+                 viewBox="0 0 100 100"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="1.6"
+                 stroke-linecap="round"
+                 stroke-linejoin="round"
+                 aria-hidden="true">
+              <path d="M50 20v63"/>
+              <path d="M22 83h56"/>
+              <path d="M31 83V52h38v31"/>
+              <path d="M24 52h52"/>
+              <path d="M39 52V40h22v12"/>
+              <path d="M50 40V30"/>
+              <path d="M50 20l3 6-3 4-3-4z"/>
+              <path d="M19 26l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/>
+              <path d="M79 16l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/>
+              <path d="M80 42l1 3 3 1-3 1-1 3-1-3-3-1 3-1z"/>
+              <path d="M24 65c-5-5-10 1-4 5l4 3 4-3c6-4 1-10-4-5z"/>
+              <path d="M76 65c-5-5-10 1-4 5l4 3 4-3c6-4 1-10-4-5z"/>
+            </svg>
 
-  const cantidad = window.innerWidth < 600 ? 18 : 30;
+            <div class="evento-titulo">Recepción</div>
 
-  for (let i = 0; i < cantidad; i++) {
-    const corazon = document.createElement("span");
-    corazon.className = "corazon-dorado";
-    corazon.textContent = "♥";
+            <p><strong>Rancho Gran Gils</strong></p>
 
-    const tamano = 7 + Math.random() * 8;
-    const duracion = 8 + Math.random() * 10;
-    const retraso = Math.random() * -18;
+            <p>Vereda Churuvita, Samacá</p>
 
-    corazon.style.left = Math.random() * 100 + "%";
-    corazon.style.fontSize = tamano + "px";
-    corazon.style.animationDuration = duracion + "s";
-    corazon.style.animationDelay = retraso + "s";
+            <p class="nota-evento">
+              Celebraremos juntos esta nueva etapa
+              con alegría, cariño y mucha ilusión.
+            </p>
+          </article>
 
-    contenedor.appendChild(corazon);
-  }
-})();
+        </div>
+      </div>
+    </section>
 
-/* MÚSICA DE LA INVITACIÓN */
-const ID_CANCION = "a_wBQrUdcvk";
-const reproductor = document.getElementById("reproductorBoda");
-const pantallaEntrada = document.getElementById("pantallaEntrada");
+    <!-- LLUVIA DE SOBRES -->
+    <section class="sobres">
+      <div class="contenido">
 
-function iniciarCancion() {
-  reproductor.src =
-    "https://www.youtube-nocookie.com/embed/" + ID_CANCION +
-    "?autoplay=1&loop=1&playlist=" + ID_CANCION;
-}
+        <img
+          src="CORBAT%C3%8DN.jpeg"
+          alt="Detalle elegido para nuestro día especial"
+          class="foto-corbata">
 
-document.getElementById("abrirInvitacion").addEventListener("click", function() {
-  iniciarCancion();
-  pantallaEntrada.classList.add("cerrada");
-});
+        <div class="titulo-sobres">Lluvia de sobres</div>
 
-/* CUENTA REGRESIVA HASTA LAS 3:00 P. M. EN COLOMBIA */
-const boda = new Date("2026-12-12T15:00:00-05:00");
+        <h2 class="subtitulo-sobres">Un detalle de amor</h2>
 
-function actualizarCuenta() {
-  const diferencia = boda.getTime() - Date.now();
+        <div class="sobre-icono" aria-hidden="true">♡</div>
 
-  if (diferencia <= 0) {
-    ["dias", "horas", "minutos", "segundos"].forEach(id => {
-      document.getElementById(id).textContent = "0";
+        <p class="texto-sobres">
+          Tu presencia es el regalo más bonito para nosotros.
+          Si deseas tener un detalle adicional, agradeceremos
+          tu cariño a través de una lluvia de sobres.
+        </p>
+
+        <p class="nota-invitados">
+          Queremos compartir este momento con nuestro círculo
+          más cercano; por ello, la invitación es válida únicamente
+          para la(s) persona(s) a quien va dirigida.
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <div class="contenido">
+
+      <img
+        src="ANILLOS.jpeg"
+        alt="Nuestros anillos"
+        class="foto-anillos">
+
+      <div class="nombres">Edwin <span class="ampersand">&</span> Andrea</div>
+
+      <p>12 de diciembre de 2026 · Samacá, Boyacá</p>
+
+      <div class="pie-frase">DIOS, TÚ Y YO</div>
+
+      <div class="linea"></div>
+
+      <p>Con amor, esperamos compartir este día contigo.</p>
+
+    </div>
+  </footer>
+
+  <script>
+    // ABRIR INVITACIÓN E INTENTAR INICIAR LA MÚSICA
+    const botonAbrir = document.getElementById("abrirInvitacion");
+    const pantallaEntrada = document.getElementById("entrada");
+    const reproductor = document.getElementById("musica");
+
+    botonAbrir.addEventListener("click", function () {
+      reproductor.src =
+        "https://www.youtube.com/embed/a_wBQrUdcvk?autoplay=1&loop=1&playlist=a_wBQrUdcvk";
+
+      pantallaEntrada.classList.add("oculta");
+      document.body.classList.remove("sin-scroll");
     });
 
-    document.getElementById("mensaje").textContent =
-      "¡Llegó nuestro gran día!";
-    return;
-  }
+    // CUENTA REGRESIVA: 12 DE DICIEMBRE DE 2026, 3:00 P. M.
+    // Colombia corresponde a UTC-5.
+    const fechaBoda = new Date("2026-12-12T15:00:00-05:00").getTime();
 
-  const total = Math.floor(diferencia / 1000);
+    function actualizarCuenta() {
+      const ahora = Date.now();
+      const diferencia = fechaBoda - ahora;
 
-  document.getElementById("dias").textContent =
-    Math.floor(total / 86400);
+      if (diferencia <= 0) {
+        document.getElementById("dias").textContent = "0";
+        document.getElementById("horas").textContent = "00";
+        document.getElementById("minutos").textContent = "00";
+        document.getElementById("segundos").textContent = "00";
+        return;
+      }
 
-  document.getElementById("horas").textContent =
-    Math.floor(total % 86400 / 3600);
+      const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor(
+        (diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const minutos = Math.floor(
+        (diferencia % (1000 * 60 * 60)) / (1000 * 60)
+      );
+      const segundos = Math.floor(
+        (diferencia % (1000 * 60)) / 1000
+      );
 
-  document.getElementById("minutos").textContent =
-    Math.floor(total % 3600 / 60);
+      document.getElementById("dias").textContent = dias;
+      document.getElementById("horas").textContent =
+        String(horas).padStart(2, "0");
+      document.getElementById("minutos").textContent =
+        String(minutos).padStart(2, "0");
+      document.getElementById("segundos").textContent =
+        String(segundos).padStart(2, "0");
+    }
 
-  document.getElementById("segundos").textContent =
-    total % 60;
-}
+    actualizarCuenta();
+    setInterval(actualizarCuenta, 1000);
 
-actualizarCuenta();
-setInterval(actualizarCuenta, 1000);
-</script>
+    // LLUVIA CONTINUA DE PEQUEÑOS CORAZONES DORADOS
+    const contenedorCorazones =
+      document.getElementById("lluviaCorazones");
+
+    function crearCorazon() {
+      const corazon = document.createElement("span");
+      corazon.className = "corazon";
+      corazon.textContent = Math.random() > 0.5 ? "♡" : "♥";
+
+      corazon.style.left = Math.random() * 100 + "vw";
+      corazon.style.fontSize = (9 + Math.random() * 12) + "px";
+      corazon.style.animationDuration = (8 + Math.random() * 10) + "s";
+      corazon.style.opacity = (0.2 + Math.random() * 0.35).toString();
+
+      contenedorCorazones.appendChild(corazon);
+
+      setTimeout(function () {
+        corazon.remove();
+      }, 19000);
+    }
+
+    for (let i = 0; i < 12; i++) {
+      setTimeout(crearCorazon, i * 450);
+    }
+
+    setInterval(crearCorazon, 650);
+  </script>
 
 </body>
 </html>
