@@ -19,13 +19,9 @@
   --texto-oscuro: #293147;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
@@ -36,13 +32,254 @@ body {
   overflow-x: hidden;
 }
 
-body.sin-scroll {
+body.sin-scroll { overflow: hidden; }
+
+button { font-family: inherit; }
+
+/* =====================================
+   NUEVO SOBRE DORADO E & A
+===================================== */
+
+.sobre-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 18px;
   overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 38%, #293b59 0%, transparent 58%),
+    linear-gradient(145deg, #0b1323, #101b31 55%, #17243a);
+  transition: opacity .8s ease, visibility .8s ease;
 }
 
-button {
-  font-family: inherit;
+.sobre-intro.retirado {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
+
+.sobre-contenido {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: aparecer 1s ease both;
+}
+
+.sobre-etiqueta {
+  margin: 0 0 12px;
+  color: var(--dorado-claro);
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.sobre-titulo {
+  margin: 0 0 8px;
+  color: var(--marfil);
+  font-size: clamp(29px, 7vw, 39px);
+  font-weight: normal;
+}
+
+.sobre-frase {
+  margin: 0 0 38px;
+  color: #e9dfce;
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.7;
+}
+
+.escenario-sobre {
+  position: relative;
+  width: min(88vw, 370px);
+  aspect-ratio: 1.32 / 1;
+  perspective: 1000px;
+  filter: drop-shadow(0 24px 28px rgba(0,0,0,.35));
+}
+
+.carta-detras {
+  position: absolute;
+  left: 7%;
+  top: 0;
+  width: 86%;
+  height: 91%;
+  padding: 22px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #dfc88d;
+  background:
+    linear-gradient(135deg, #fffdf5, #f1e5c8);
+  color: var(--azul);
+  box-shadow: inset 0 0 0 5px rgba(201,164,92,.12);
+  transition: transform 1s ease, top 1s ease;
+}
+
+.carta-detras::before {
+  content: "✧";
+  color: var(--dorado);
+  font-size: 23px;
+  margin-bottom: 8px;
+}
+
+.carta-detras strong {
+  font-size: clamp(21px, 6vw, 29px);
+  font-weight: normal;
+}
+
+.carta-detras span {
+  margin-top: 8px;
+  color: #846b3d;
+  font-size: 13px;
+  font-style: italic;
+}
+
+.carta-detras small {
+  margin-top: 15px;
+  color: #846b3d;
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+.sobre-base {
+  position: absolute;
+  inset: 13% 0 0;
+  overflow: hidden;
+  background: linear-gradient(145deg, #f0dba7, #c9a45c 52%, #aa803d);
+  border: 1px solid #e6cd8c;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 5px rgba(255,255,255,.12);
+}
+
+.solapa-izquierda,
+.solapa-derecha,
+.solapa-inferior {
+  position: absolute;
+  inset: 0;
+}
+
+.solapa-izquierda {
+  background: linear-gradient(115deg, #e8cf92, #c29a4e);
+  clip-path: polygon(0 0, 55% 50%, 0 100%);
+}
+
+.solapa-derecha {
+  background: linear-gradient(245deg, #f4dfaa, #c7a158);
+  clip-path: polygon(100% 0, 45% 50%, 100% 100%);
+}
+
+.solapa-inferior {
+  background: linear-gradient(20deg, #c09a50, #e8d097);
+  clip-path: polygon(0 100%, 50% 37%, 100% 100%);
+}
+
+.solapa-superior {
+  position: absolute;
+  z-index: 4;
+  top: 13%;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  background: linear-gradient(160deg, #f7e5b4, #c6a05a 82%);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top center;
+  transition: transform .85s ease, opacity .4s ease;
+  filter: drop-shadow(0 3px 2px rgba(71,49,15,.12));
+}
+
+.sello-boton {
+  position: absolute;
+  z-index: 10;
+  left: 50%;
+  top: 56%;
+  width: 91px;
+  height: 91px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  border: 2px solid #e6c87d;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 32% 24%, #b83b3d, #821c2b 54%, #57101e);
+  color: #f8e8bb;
+  box-shadow:
+    0 0 0 4px rgba(126, 26, 39, .32),
+    inset 0 0 0 2px rgba(244,207,133,.38),
+    0 6px 13px rgba(0,0,0,.28);
+  cursor: pointer;
+  transition: transform .3s ease, opacity .4s ease, filter .3s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.sello-boton:hover {
+  filter: brightness(1.12);
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+.sello-iniciales {
+  font-size: 24px;
+  font-style: italic;
+  line-height: 1.1;
+}
+
+.sello-adornos {
+  font-size: 11px;
+  letter-spacing: 3px;
+}
+
+.sello-instruccion {
+  position: absolute;
+  top: calc(100% + 18px);
+  left: 50%;
+  width: 240px;
+  transform: translateX(-50%);
+  color: var(--dorado-claro);
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  animation: respirar 1.8s ease-in-out infinite;
+}
+
+.sobre-intro.abriendo .solapa-superior {
+  transform: rotateX(180deg);
+  opacity: .3;
+}
+
+.sobre-intro.abriendo .sello-boton {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1.5) rotate(-15deg);
+  pointer-events: none;
+}
+
+.sobre-intro.abriendo .carta-detras {
+  top: -25%;
+  transform: translateY(-12%) scale(1.04);
+}
+
+.sobre-intro.abriendo .escenario-sobre {
+  animation: brilloSobre 1.2s ease;
+}
+
+.sobre-pie {
+  margin: 68px 0 0;
+  color: #bfc3cd;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.sobre-pie span { color: var(--dorado-claro); }
+
+/* =====================================
+   PORTADA ORIGINAL
+===================================== */
 
 .entrada {
   position: fixed;
@@ -56,7 +293,13 @@ button {
   background:
     radial-gradient(ellipse at top, #243451 0%, transparent 55%),
     var(--azul);
-  transition: opacity 0.9s ease, visibility 0.9s ease;
+  transition: opacity .9s ease, visibility .9s ease;
+}
+
+.entrada.esperando {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .entrada.oculta {
@@ -97,13 +340,11 @@ button {
   pointer-events: none;
 }
 
-.marco-foto::before {
-  transform: rotate(-7deg) scale(1.02, 1.04);
-}
+.marco-foto::before { transform: rotate(-7deg) scale(1.02, 1.04); }
 
 .marco-foto::after {
   transform: rotate(7deg) scale(1.05, 1.02);
-  border-color: rgba(240, 219, 167, 0.55);
+  border-color: rgba(240,219,167,.55);
 }
 
 .foto-portada {
@@ -113,7 +354,7 @@ button {
   object-fit: cover;
   border-radius: 48% 48% 46% 46%;
   border: 2px solid var(--dorado);
-  box-shadow: 0 0 30px rgba(201, 164, 92, 0.17);
+  box-shadow: 0 0 30px rgba(201,164,92,.17);
 }
 
 .destello {
@@ -124,15 +365,12 @@ button {
   animation: brillar 2s ease-in-out infinite alternate;
 }
 
-.destello.uno {
-  top: 4%;
-  right: 3%;
-}
+.destello.uno { top: 4%; right: 3%; }
 
 .destello.dos {
   bottom: 13%;
   left: 0;
-  animation-delay: 0.6s;
+  animation-delay: .6s;
 }
 
 .entrada h1 {
@@ -168,13 +406,13 @@ button {
   font-size: 13px;
   letter-spacing: 1.3px;
   cursor: pointer;
-  box-shadow: 0 5px 22px rgba(0, 0, 0, 0.22);
-  transition: transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 5px 22px rgba(0,0,0,.22);
+  transition: transform .25s, box-shadow .25s;
 }
 
 .boton-dorado:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(201, 164, 92, 0.2);
+  box-shadow: 0 8px 25px rgba(201,164,92,.2);
 }
 
 .nota-musica {
@@ -183,6 +421,10 @@ button {
   font-size: 12px;
   line-height: 1.6;
 }
+
+/* =====================================
+   CONTENIDO DE LA INVITACIÓN
+===================================== */
 
 main {
   width: 100%;
@@ -229,9 +471,7 @@ h3 {
   font-style: italic;
 }
 
-p {
-  line-height: 1.8;
-}
+p { line-height: 1.8; }
 
 .promesa {
   margin-top: 7px;
@@ -271,13 +511,9 @@ p {
 }
 
 .cuenta-regresiva .etiqueta,
-.cuenta-regresiva h2 {
-  color: var(--texto-oscuro);
-}
+.cuenta-regresiva h2 { color: var(--texto-oscuro); }
 
-.cuenta-regresiva .linea-dorada {
-  background: var(--dorado);
-}
+.cuenta-regresiva .linea-dorada { background: var(--dorado); }
 
 .reloj {
   display: grid;
@@ -289,8 +525,8 @@ p {
 
 .unidad-tiempo {
   padding: 16px 4px;
-  border: 1px solid rgba(201, 164, 92, 0.75);
-  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(201,164,92,.75);
+  background: rgba(255,255,255,.55);
 }
 
 .numero {
@@ -335,8 +571,8 @@ p {
 
 .tarjeta-evento {
   padding: 25px 16px;
-  border: 1px solid rgba(201, 164, 92, 0.7);
-  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(201,164,92,.7);
+  background: rgba(255,255,255,.025);
 }
 
 .icono-evento {
@@ -367,9 +603,7 @@ p {
   color: var(--marfil) !important;
 }
 
-.direccion {
-  font-size: 13px !important;
-}
+.direccion { font-size: 13px !important; }
 
 .nota-invitados {
   max-width: 560px;
@@ -380,8 +614,7 @@ p {
 }
 
 .regalos {
-  background:
-    radial-gradient(ellipse at center, #1c2b44 0%, var(--azul) 75%);
+  background: radial-gradient(ellipse at center, #1c2b44 0%, var(--azul) 75%);
 }
 
 .foto-corbatin {
@@ -426,7 +659,7 @@ p {
 .pie {
   padding: 55px 20px 40px;
   background: #0b1323;
-  border-top: 1px solid rgba(201, 164, 92, 0.45);
+  border-top: 1px solid rgba(201,164,92,.45);
 }
 
 .pie img {
@@ -458,6 +691,8 @@ p {
   letter-spacing: 5px;
 }
 
+/* LLUVIA DE CORAZONES */
+
 .corazones {
   position: fixed;
   inset: 0;
@@ -470,54 +705,41 @@ p {
   position: absolute;
   top: -40px;
   color: var(--dorado);
-  opacity: 0.65;
+  opacity: .65;
   animation: caer linear infinite;
-  text-shadow: 0 0 8px rgba(201, 164, 92, 0.2);
+  text-shadow: 0 0 8px rgba(201,164,92,.2);
 }
 
 @keyframes caer {
-  0% {
-    transform: translateY(-40px) rotate(0deg);
-    opacity: 0;
-  }
-  10% {
-    opacity: 0.7;
-  }
-  90% {
-    opacity: 0.55;
-  }
-  100% {
-    transform: translateY(110vh) rotate(360deg);
-    opacity: 0;
-  }
+  0% { transform: translateY(-40px) rotate(0deg); opacity: 0; }
+  10% { opacity: .7; }
+  90% { opacity: .55; }
+  100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
 }
 
 @keyframes aparecer {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes brillar {
-  from {
-    opacity: 0.45;
-    transform: scale(0.85);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1.15);
-  }
+  from { opacity: .45; transform: scale(.85); }
+  to { opacity: 1; transform: scale(1.15); }
+}
+
+@keyframes respirar {
+  0%, 100% { opacity: .65; }
+  50% { opacity: 1; }
+}
+
+@keyframes brilloSobre {
+  0% { filter: brightness(1); }
+  50% { filter: brightness(1.16); }
+  100% { filter: brightness(1); }
 }
 
 @media (max-width: 520px) {
-  .seccion {
-    padding: 52px 19px;
-  }
+  .seccion { padding: 52px 19px; }
 
   .eventos {
     grid-template-columns: 1fr;
@@ -526,13 +748,9 @@ p {
     margin-left: auto;
   }
 
-  .reloj {
-    gap: 6px;
-  }
+  .reloj { gap: 6px; }
 
-  .unidad-tiempo {
-    padding: 13px 2px;
-  }
+  .unidad-tiempo { padding: 13px 2px; }
 
   .unidad {
     font-size: 9px;
@@ -544,9 +762,30 @@ p {
     padding-bottom: 15px;
   }
 
-  .marco-foto {
-    width: min(70vw, 260px);
+  .marco-foto { width: min(70vw, 260px); }
+
+  .sello-boton {
+    width: 79px;
+    height: 79px;
   }
+
+  .sello-iniciales { font-size: 21px; }
+
+  .sobre-frase { margin-bottom: 30px; }
+
+  .sobre-pie { margin-top: 60px; }
+}
+
+@media (max-height: 650px) {
+  .sobre-intro { overflow-y: auto; }
+
+  .sobre-contenido { padding: 15px 0; }
+
+  .sobre-frase { margin-bottom: 22px; }
+
+  .escenario-sobre { width: min(76vw, 310px); }
+
+  .sobre-pie { margin-top: 50px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -554,9 +793,9 @@ p {
   *::before,
   *::after {
     scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
+    animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    transition-duration: .01ms !important;
   }
 }
 </style>
@@ -572,8 +811,57 @@ p {
   preload="auto"
 ></audio>
 
-<!-- PORTADA DE APERTURA -->
-<div class="entrada" id="entrada">
+<!-- NUEVA PANTALLA: SOBRE CERRADO -->
+<section class="sobre-intro" id="sobreIntro" aria-label="Abre nuestra invitación">
+  <div class="sobre-contenido">
+    <p class="sobre-etiqueta">Una fecha, una promesa, una vida juntos</p>
+
+    <h1 class="sobre-titulo">Tienes una invitación</h1>
+
+    <p class="sobre-frase">
+      Hemos guardado para ti<br>
+      un pedacito de nuestra historia.
+    </p>
+
+    <div class="escenario-sobre" id="escenarioSobre">
+      <div class="carta-detras">
+        <strong>Edwin & Andrea</strong>
+        <span>Una promesa de amor</span>
+        <small>12 · 12 · 2026</small>
+      </div>
+
+      <div class="sobre-base">
+        <div class="solapa-izquierda"></div>
+        <div class="solapa-derecha"></div>
+        <div class="solapa-inferior"></div>
+      </div>
+
+      <div class="solapa-superior"></div>
+
+      <button
+        class="sello-boton"
+        id="abrirSello"
+        type="button"
+        aria-label="Abrir el sobre con el sello E y A"
+      >
+        <span class="sello-iniciales">E & A</span>
+        <span class="sello-adornos">✦ ✧ ✦</span>
+      </button>
+
+      <div class="sello-instruccion" id="instruccionSello">
+        Toca el sello para abrir
+      </div>
+    </div>
+
+    <p class="sobre-pie">
+      Con amor, <span>Edwin & Andrea</span><br>
+      <span>DIOS, TÚ Y YO</span>
+    </p>
+  </div>
+</section>
+
+<!-- PORTADA ORIGINAL: APARECE DESPUÉS DEL SOBRE -->
+<div class="entrada esperando" id="entrada">
   <div class="entrada-contenido">
     <p class="mini-texto">Una invitación desde el corazón</p>
 
@@ -613,10 +901,8 @@ p {
   <section class="seccion">
     <div class="contenedor">
       <p class="etiqueta">Con la bendición de Dios</p>
-
       <h2>¡Nos casamos!</h2>
       <p class="promesa">Una promesa de amor</p>
-
       <div class="linea-dorada"></div>
 
       <p class="versiculo">
@@ -641,7 +927,6 @@ p {
     <div class="contenedor">
       <p class="etiqueta">Cada vez falta menos</p>
       <h2>La cuenta regresiva</h2>
-
       <div class="linea-dorada"></div>
 
       <div class="reloj" aria-label="Cuenta regresiva para la boda">
@@ -649,17 +934,14 @@ p {
           <span class="numero" id="dias">000</span>
           <span class="unidad">Días</span>
         </div>
-
         <div class="unidad-tiempo">
           <span class="numero" id="horas">00</span>
           <span class="unidad">Horas</span>
         </div>
-
         <div class="unidad-tiempo">
           <span class="numero" id="minutos">00</span>
           <span class="unidad">Minutos</span>
         </div>
-
         <div class="unidad-tiempo">
           <span class="numero" id="segundos">00</span>
           <span class="unidad">Segundos</span>
@@ -692,18 +974,12 @@ p {
       <div class="linea-dorada"></div>
 
       <div class="eventos">
-
         <article class="tarjeta-evento">
           <span class="icono-evento" aria-hidden="true">♧</span>
           <p class="etiqueta">Ceremonia religiosa</p>
           <h3>La ceremonia</h3>
-
           <p class="hora">3:00 p. m.</p>
-
-          <p class="lugar">
-            Parroquia Señor de los Milagros de Samacá
-          </p>
-
+          <p class="lugar">Parroquia Señor de los Milagros de Samacá</p>
           <p class="direccion">
             Capilla El Voto<br>
             Samacá, Boyacá
@@ -714,21 +990,17 @@ p {
           <span class="icono-evento" aria-hidden="true">✧</span>
           <p class="etiqueta">Celebremos juntos</p>
           <h3>Recepción</h3>
-
           <p class="lugar">Rancho Gran Gils</p>
-
           <p class="direccion">
             Vereda Churuvita<br>
             Samacá, Boyacá
           </p>
-
           <p>
             Después de la ceremonia,
             queremos compartir contigo
             esta alegría.
           </p>
         </article>
-
       </div>
 
       <p class="nota-invitados">
@@ -750,10 +1022,8 @@ p {
       >
 
       <p class="etiqueta">Un gesto de cariño</p>
-
       <h2 class="titulo-regalos">Lluvia de sobres</h2>
       <p class="subtitulo-regalos">Un detalle de amor</p>
-
       <div class="linea-dorada"></div>
 
       <div class="sobre" aria-hidden="true">♡</div>
@@ -766,7 +1036,6 @@ p {
       </p>
     </div>
   </section>
-
 </main>
 
 <!-- PIE DE PÁGINA -->
@@ -774,14 +1043,9 @@ p {
   <div class="contenedor">
     <p class="etiqueta">Con amor y gratitud</p>
 
-    <img
-      src="ANILLOS.jpeg"
-      alt="Nuestros anillos"
-      loading="lazy"
-    >
+    <img src="ANILLOS.jpeg" alt="Nuestros anillos" loading="lazy">
 
     <h2 class="nombres-pie">Edwin & Andrea</h2>
-
     <p class="pie-fecha">12 DE DICIEMBRE DE 2026</p>
     <p>Samacá, Boyacá</p>
 
@@ -797,11 +1061,54 @@ p {
 </footer>
 
 <script>
-/* ABRIR INVITACIÓN Y REPRODUCIR LA CANCIÓN */
-const botonAbrir = document.getElementById("abrirInvitacion");
+/* =====================================
+   ABRIR SOBRE Y MOSTRAR LA PORTADA
+===================================== */
+
+const sobreIntro = document.getElementById("sobreIntro");
+const botonSello = document.getElementById("abrirSello");
+const instruccionSello = document.getElementById("instruccionSello");
 const portada = document.getElementById("entrada");
 const musica = document.getElementById("musica");
 const notaMusica = document.getElementById("notaMusica");
+const botonAbrir = document.getElementById("abrirInvitacion");
+
+let sobreAbierto = false;
+
+botonSello.addEventListener("click", function () {
+  if (sobreAbierto) return;
+  sobreAbierto = true;
+
+  sobreIntro.classList.add("abriendo");
+  instruccionSello.textContent = "Con cariño, Edwin & Andrea";
+
+  /*
+    Intentamos iniciar la música durante el toque del sello.
+    Algunos navegadores pueden bloquearla; por eso también
+    se intenta reproducir al pulsar el botón de la portada.
+  */
+  musica.volume = 0.7;
+
+  musica.play().then(function () {
+    notaMusica.textContent = "♪ Música de fondo";
+  }).catch(function () {
+    /* Se volverá a intentar al tocar el siguiente botón. */
+  });
+
+  setTimeout(function () {
+    sobreIntro.classList.add("retirado");
+    portada.classList.remove("esperando");
+    document.body.classList.remove("sin-scroll");
+  }, 1150);
+
+  setTimeout(function () {
+    sobreIntro.style.display = "none";
+  }, 2050);
+});
+
+/* =====================================
+   ABRIR LA INVITACIÓN COMPLETA
+===================================== */
 
 botonAbrir.addEventListener("click", function () {
   portada.classList.add("oculta");
@@ -809,14 +1116,16 @@ botonAbrir.addEventListener("click", function () {
 
   musica.volume = 0.7;
 
-  musica.play()
-    .then(function () {
+  if (musica.paused) {
+    musica.play().then(function () {
       notaMusica.textContent = "♪ Música de fondo";
-    })
-    .catch(function () {
+    }).catch(function () {
       notaMusica.textContent =
         "No se pudo cargar la música. Verifica el archivo MP3 en GitHub.";
     });
+  } else {
+    notaMusica.textContent = "♪ Música de fondo";
+  }
 
   setTimeout(function () {
     portada.style.display = "none";
@@ -827,7 +1136,11 @@ botonAbrir.addEventListener("click", function () {
   }, 500);
 });
 
-/* CUENTA REGRESIVA: 12 DE DICIEMBRE DE 2026, 3:00 P. M. */
+/* =====================================
+   CUENTA REGRESIVA
+   12 DE DICIEMBRE DE 2026, 3:00 P. M.
+===================================== */
+
 const fechaBoda = new Date("2026-12-12T15:00:00-05:00").getTime();
 
 function actualizarCuenta() {
@@ -843,29 +1156,23 @@ function actualizarCuenta() {
   }
 
   const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-  const horas = Math.floor(
-    (diferencia / (1000 * 60 * 60)) % 24
-  );
-  const minutos = Math.floor(
-    (diferencia / (1000 * 60)) % 60
-  );
-  const segundos = Math.floor(
-    (diferencia / 1000) % 60
-  );
+  const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+  const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
+  const segundos = Math.floor((diferencia / 1000) % 60);
 
   document.getElementById("dias").textContent = dias;
-  document.getElementById("horas").textContent =
-    String(horas).padStart(2, "0");
-  document.getElementById("minutos").textContent =
-    String(minutos).padStart(2, "0");
-  document.getElementById("segundos").textContent =
-    String(segundos).padStart(2, "0");
+  document.getElementById("horas").textContent = String(horas).padStart(2, "0");
+  document.getElementById("minutos").textContent = String(minutos).padStart(2, "0");
+  document.getElementById("segundos").textContent = String(segundos).padStart(2, "0");
 }
 
 actualizarCuenta();
 setInterval(actualizarCuenta, 1000);
 
-/* LLUVIA DE CORAZONES DORADOS */
+/* =====================================
+   LLUVIA DE CORAZONES DORADOS
+===================================== */
+
 const contenedorCorazones = document.getElementById("corazones");
 
 for (let i = 0; i < 22; i++) {
