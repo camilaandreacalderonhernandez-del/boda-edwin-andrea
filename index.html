@@ -239,15 +239,15 @@ p { line-height: 1.8; }
   filter: drop-shadow(0 3px 2px rgba(71,49,15,.15));
 }
 
-/* Sello de cera */
+/* Sello de cera: un poco más grande */
 
 .sello-boton {
   position: absolute;
   z-index: 10;
   left: 50%;
   top: 56%;
-  width: 94px;
-  height: 94px;
+  width: 112px;
+  height: 112px;
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
@@ -288,25 +288,27 @@ p { line-height: 1.8; }
 }
 
 .sello-iniciales {
-  font-size: 24px;
+  font-size: 27px;
   font-style: italic;
   line-height: 1.1;
   text-shadow: 0 1px 2px rgba(52,0,0,.6);
 }
 
 .sello-adornos {
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 3px;
 }
+
+/* Única indicación bajo el sobre */
 
 .sello-instruccion {
   position: absolute;
   top: calc(100% + 18px);
   left: 50%;
-  width: 250px;
+  width: 280px;
   transform: translateX(-50%);
   color: var(--dorado-claro);
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   animation: respirar 1.8s ease-in-out infinite;
@@ -327,15 +329,6 @@ p { line-height: 1.8; }
   top: -27%;
   transform: translateY(-12%) scale(1.04);
 }
-
-.sobre-pie {
-  margin: 66px 0 0;
-  color: #bfc3cd;
-  font-size: 12px;
-  line-height: 1.8;
-}
-
-.sobre-pie span { color: var(--dorado-claro); }
 
 /* ===================================
    CONTENIDO DE LA INVITACIÓN
@@ -534,7 +527,7 @@ h3 {
   font-style: italic;
 }
 
-/* Lluvia de sobres */
+/* Lluvia de sobres: título pequeño y discreto */
 
 .regalos {
   background: radial-gradient(ellipse at center, #1c2b44 0%, var(--azul) 75%);
@@ -548,37 +541,23 @@ h3 {
   object-fit: contain;
 }
 
-/* Título deliberadamente más pequeño */
-
 .titulo-regalos {
-  margin-bottom: 4px;
-  font-size: clamp(25px, 5.5vw, 32px);
-}
-
-.subtitulo-regalos {
-  margin-top: 0;
-  color: var(--dorado-claro);
-  font-size: 22px;
+  margin: 0 auto 18px;
+  color: #d8c8a7;
+  font-size: 12px;
+  font-weight: normal;
   font-style: italic;
+  letter-spacing: 1.5px;
+  text-transform: lowercase;
 }
 
 .mensaje-regalo {
   max-width: 500px;
-  margin: 22px auto;
+  margin: 0 auto;
   color: #e8dfcf;
-  font-size: 15px;
-}
-
-.simbolo-sobre {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 75px;
-  height: 58px;
-  margin: 15px 0;
-  border: 1px solid var(--dorado);
-  color: var(--dorado-claro);
-  font-size: 33px;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.9;
 }
 
 /* Final */
@@ -590,10 +569,10 @@ h3 {
 }
 
 .pie img {
-  width: min(100%, 260px);
-  max-height: 180px;
+  width: min(100%, 300px);
+  max-height: 360px;
   margin: 15px auto;
-  object-fit: cover;
+  object-fit: contain;
   border: 1px solid var(--dorado);
   padding: 5px;
 }
@@ -668,15 +647,13 @@ h3 {
   }
 
   .sello-boton {
-    width: 80px;
-    height: 80px;
+    width: 96px;
+    height: 96px;
   }
 
-  .sello-iniciales { font-size: 21px; }
+  .sello-iniciales { font-size: 24px; }
 
   .sobre-frase { margin-bottom: 28px; }
-
-  .sobre-pie { margin-top: 60px; }
 }
 
 @media (max-height: 650px) {
@@ -687,8 +664,6 @@ h3 {
   .sobre-frase { margin-bottom: 20px; }
 
   .escenario-sobre { width: min(76vw, 310px); }
-
-  .sobre-pie { margin-top: 50px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -756,12 +731,10 @@ h3 {
       <div class="sello-instruccion" id="instruccionSello">
         Toca el sello para abrir
       </div>
+
     </div>
 
-    <p class="sobre-pie">
-      Con amor, <span>Edwin & Andrea</span><br>
-      <span>DIOS, TÚ Y YO</span>
-    </p>
+    <!-- Se elimina el texto que antes aparecía debajo del sobre -->
 
   </div>
 </section>
@@ -769,7 +742,7 @@ h3 {
 <!-- CORAZONES -->
 <div class="corazones" id="corazones" aria-hidden="true"></div>
 
-<!-- INVITACIÓN: SE MUESTRA AL ABRIR EL SOBRE -->
+<!-- INVITACIÓN -->
 <main id="invitacion">
 
   <!-- PRESENTACIÓN -->
@@ -932,21 +905,12 @@ h3 {
         loading="lazy"
       >
 
-      <p class="etiqueta">Un gesto de cariño</p>
-
-      <h2 class="titulo-regalos">Lluvia de sobres</h2>
-
-      <p class="subtitulo-regalos">Un detalle de amor</p>
-
-      <div class="linea-dorada"></div>
-
-      <div class="simbolo-sobre" aria-hidden="true">♡</div>
+      <h2 class="titulo-regalos">lluvia de sobres</h2>
 
       <p class="mensaje-regalo">
-        Tu presencia y tus buenos deseos son el regalo
-        más especial para nosotros. Si deseas tener
-        un detalle adicional, recibiremos con gratitud
-        tu lluvia de sobres.
+        Tu presencia será nuestro regalo más bonito.
+        Si deseas darnos un detalle, lo recibiremos
+        con mucho amor y gratitud.
       </p>
 
     </div>
@@ -961,8 +925,8 @@ h3 {
     <p class="etiqueta">Con amor y gratitud</p>
 
     <img
-      src="ANILLOS.jpeg"
-      alt="Nuestros anillos"
+      src="FINAL.jpeg"
+      alt="Edwin y Andrea"
       loading="lazy"
     >
 
