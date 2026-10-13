@@ -109,8 +109,6 @@ p { line-height: 1.8; }
   filter: drop-shadow(0 22px 25px rgba(0,0,0,.4));
 }
 
-/* La tarjeta que está dentro */
-
 .carta-detras {
   position: absolute;
   z-index: 1;
@@ -160,7 +158,7 @@ p { line-height: 1.8; }
   letter-spacing: 3px;
 }
 
-/* Cuerpo del sobre: papel con textura y pliegues */
+/* Cuerpo del sobre */
 
 .sobre-base {
   position: absolute;
@@ -184,8 +182,6 @@ p { line-height: 1.8; }
     inset 0 -10px 22px rgba(116,91,52,.08),
     0 8px 15px rgba(0,0,0,.18);
 }
-
-/* Líneas de pliegue del papel */
 
 .sobre-base::after {
   content: "";
@@ -239,7 +235,7 @@ p { line-height: 1.8; }
   filter: drop-shadow(0 3px 2px rgba(71,49,15,.15));
 }
 
-/* Sello de cera: un poco más grande */
+/* Sello de cera */
 
 .sello-boton {
   position: absolute;
@@ -298,8 +294,6 @@ p { line-height: 1.8; }
   font-size: 12px;
   letter-spacing: 3px;
 }
-
-/* Única indicación bajo el sobre */
 
 .sello-instruccion {
   position: absolute;
@@ -527,7 +521,7 @@ h3 {
   font-style: italic;
 }
 
-/* Lluvia de sobres: título pequeño y discreto */
+/* Lluvia de sobres */
 
 .regalos {
   background: radial-gradient(ellipse at center, #1c2b44 0%, var(--azul) 75%);
@@ -560,7 +554,10 @@ h3 {
   line-height: 1.9;
 }
 
-/* Final */
+/* ===================================
+   FINAL: FOTO EN FORMA DE CORAZÓN
+   Y DESTELLOS DORADOS
+=================================== */
 
 .pie {
   padding: 55px 20px 40px;
@@ -568,13 +565,129 @@ h3 {
   border-top: 1px solid rgba(201,164,92,.45);
 }
 
+/* Marco de la fotografía */
+
+.foto-final-marco {
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 340px);
+  margin: 20px auto 28px;
+  padding: 8px;
+}
+
+/* Silueta de corazón para la foto */
+
 .pie img {
-  width: min(100%, 300px);
-  max-height: 360px;
-  margin: 15px auto;
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
   object-fit: contain;
-  border: 1px solid var(--dorado);
-  padding: 5px;
+  border: none;
+  padding: 0;
+  filter:
+    drop-shadow(0 0 4px rgba(255, 250, 240, .75))
+    drop-shadow(0 0 9px rgba(240, 219, 167, .65))
+    drop-shadow(0 0 17px rgba(201, 164, 92, .35));
+  clip-path: polygon(
+    50% 96%,
+    42% 90%,
+    32% 82%,
+    21% 72%,
+    11% 60%,
+    5% 48%,
+    4% 36%,
+    7% 26%,
+    14% 18%,
+    23% 14%,
+    33% 15%,
+    42% 20%,
+    50% 29%,
+    58% 20%,
+    67% 15%,
+    77% 14%,
+    86% 18%,
+    93% 26%,
+    96% 36%,
+    95% 48%,
+    89% 60%,
+    79% 72%,
+    68% 82%,
+    58% 90%
+  );
+}
+
+/* Pequeños destellos decorativos */
+
+.foto-final-marco::before,
+.foto-final-marco::after {
+  position: absolute;
+  z-index: 2;
+  color: #f0dba7;
+  pointer-events: none;
+  text-shadow:
+    0 0 4px rgba(255, 250, 240, .95),
+    0 0 9px rgba(240, 219, 167, .9),
+    0 0 16px rgba(201, 164, 92, .7);
+  animation: destello 2.8s ease-in-out infinite alternate;
+}
+
+.foto-final-marco::before {
+  content: "✧";
+  top: 13%;
+  right: 3%;
+  font-size: 22px;
+}
+
+.foto-final-marco::after {
+  content: "✦";
+  bottom: 16%;
+  left: 3%;
+  font-size: 18px;
+  animation-delay: 1.2s;
+}
+
+/* Destellos adicionales */
+
+.destello-foto {
+  position: absolute;
+  z-index: 2;
+  color: #fff0c5;
+  font-size: 13px;
+  pointer-events: none;
+  text-shadow:
+    0 0 5px #fffaf0,
+    0 0 12px #f0dba7;
+  animation: destello 2.3s ease-in-out infinite alternate;
+}
+
+.destello-foto.uno {
+  top: 29%;
+  left: 5%;
+}
+
+.destello-foto.dos {
+  top: 7%;
+  left: 31%;
+  animation-delay: .7s;
+}
+
+.destello-foto.tres {
+  right: 8%;
+  bottom: 35%;
+  animation-delay: 1.4s;
+}
+
+@keyframes destello {
+  from {
+    opacity: .35;
+    transform: scale(.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.2);
+  }
 }
 
 .nombres-pie {
@@ -654,6 +767,10 @@ h3 {
   .sello-iniciales { font-size: 24px; }
 
   .sobre-frase { margin-bottom: 28px; }
+
+  .foto-final-marco {
+    width: min(100%, 310px);
+  }
 }
 
 @media (max-height: 650px) {
@@ -733,8 +850,6 @@ h3 {
       </div>
 
     </div>
-
-    <!-- Se elimina el texto que antes aparecía debajo del sobre -->
 
   </div>
 </section>
@@ -839,7 +954,6 @@ h3 {
 
       <div class="eventos">
 
-        <!-- CEREMONIA RELIGIOSA -->
         <article class="tarjeta-evento">
 
           <span class="icono-evento" aria-hidden="true">♧</span>
@@ -859,7 +973,6 @@ h3 {
 
         </article>
 
-        <!-- RECEPCIÓN -->
         <article class="tarjeta-evento">
 
           <span class="icono-evento" aria-hidden="true">✧</span>
@@ -924,11 +1037,17 @@ h3 {
 
     <p class="etiqueta">Con amor y gratitud</p>
 
-    <img
-      src="FINAL.jpeg"
-      alt="Edwin y Andrea"
-      loading="lazy"
-    >
+    <div class="foto-final-marco">
+      <span class="destello-foto uno">✧</span>
+      <span class="destello-foto dos">✦</span>
+      <span class="destello-foto tres">✧</span>
+
+      <img
+        src="FINAL.jpeg"
+        alt="Edwin y Andrea"
+        loading="lazy"
+      >
+    </div>
 
     <h2 class="nombres-pie">Edwin & Andrea</h2>
 
@@ -964,16 +1083,11 @@ botonSello.addEventListener("click", function () {
   sobreIntro.classList.add("abriendo");
   instruccionSello.textContent = "Con cariño, Edwin & Andrea";
 
-  /* La música comienza al tocar el sello.
-     El navegador podría requerir interacción para reproducirla. */
-
   musica.volume = 0.7;
 
   musica.play().catch(function () {
     /* La invitación funciona aunque la música no se inicie. */
   });
-
-  /* Se retira el sobre y queda visible la invitación completa. */
 
   setTimeout(function () {
     sobreIntro.classList.add("retirado");
