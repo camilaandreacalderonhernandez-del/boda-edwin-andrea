@@ -398,3 +398,759 @@ h3 {
 
 .foto-anillos {
   display: block;
+  width: min(100%, 420px);
+  max-height: 330px;
+  margin: 30px auto 0;
+  object-fit: cover;
+  border: 1px solid var(--dorado);
+  padding: 6px;
+}
+
+/* ===================================
+   PORTADA FOTOGRÁFICA DE LA INVITACIÓN
+=================================== */
+
+.portada-fotografica {
+  position: relative;
+  isolation: isolate;
+  min-height: 620px;
+  padding: 24px 22px 38px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+
+.portada-fotografica::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image: url("FOTO%20JUNTITOS.jpeg");
+  background-size: cover;
+  background-position: center 42%;
+  background-repeat: no-repeat;
+  opacity: 0.48;
+  transform: scale(1.02);
+}
+
+.portada-fotografica::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(16, 27, 49, 0.42) 0%,
+      rgba(16, 27, 49, 0.18) 34%,
+      rgba(16, 27, 49, 0.24) 62%,
+      rgba(16, 27, 49, 0.72) 100%
+    );
+}
+
+.portada-fotografica .titulo-portada {
+  margin: 0;
+  color: var(--marfil);
+  font-size: clamp(34px, 8vw, 54px);
+  font-weight: normal;
+  letter-spacing: 2px;
+  line-height: 1.2;
+  text-shadow: 0 3px 12px rgba(0,0,0,.75);
+}
+
+.portada-fotografica .promesa-portada {
+  margin: 0 0 8px;
+  color: var(--dorado-claro);
+  font-size: clamp(25px, 6vw, 35px);
+  font-style: italic;
+  text-shadow: 0 3px 12px rgba(0,0,0,.8);
+}
+
+.versiculo-despues-foto {
+  padding-top: 44px;
+  padding-bottom: 48px;
+}
+
+.versiculo-despues-foto .versiculo {
+  margin-top: 0;
+}
+
+.versiculo-despues-foto .foto-anillos {
+  margin-top: 30px;
+}
+
+@media (max-width: 520px) {
+  .portada-fotografica {
+    min-height: 540px;
+    padding: 22px 18px 30px;
+  }
+}
+
+/* ===================================
+   CUENTA REGRESIVA
+=================================== */
+
+.cuenta-regresiva {
+  background:
+    radial-gradient(ellipse at center, rgba(201,164,92,.09), transparent 65%),
+    #0d1729;
+}
+
+.reloj {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  max-width: 590px;
+  margin: 32px auto 20px;
+}
+
+.unidad-tiempo {
+  padding: 18px 8px;
+  border: 1px solid rgba(201,164,92,.55);
+  background: rgba(255,250,240,.035);
+}
+
+.numero {
+  display: block;
+  color: var(--dorado-claro);
+  font-size: clamp(28px, 7vw, 42px);
+  line-height: 1.2;
+}
+
+.unidad {
+  display: block;
+  margin-top: 8px;
+  color: #e9dfce;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.fecha-especial {
+  color: var(--dorado-claro);
+  font-size: 14px;
+  letter-spacing: 4px;
+}
+
+/* ===================================
+   DETALLES Y EVENTOS
+=================================== */
+
+.foto-detalle,
+.foto-corbatin {
+  display: block;
+  width: min(100%, 360px);
+  max-height: 280px;
+  margin: 0 auto 30px;
+  object-fit: cover;
+  border: 1px solid rgba(201,164,92,.7);
+  padding: 5px;
+}
+
+.eventos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin: 30px auto;
+}
+
+.tarjeta-evento {
+  padding: 25px 18px;
+  border: 1px solid rgba(201,164,92,.5);
+  background: rgba(255,250,240,.035);
+}
+
+.icono-evento {
+  display: block;
+  color: var(--dorado-claro);
+  font-size: 29px;
+}
+
+.hora {
+  color: var(--dorado-claro);
+  font-size: 24px;
+}
+
+.lugar {
+  color: var(--marfil);
+  font-size: 17px;
+}
+
+.direccion {
+  color: #e9dfce;
+  font-size: 14px;
+}
+
+.nota-invitados {
+  max-width: 580px;
+  margin: 35px auto 0;
+  color: #d9cfbd;
+  font-size: 13px;
+  font-style: italic;
+}
+
+/* ===================================
+   LLUVIA DE SOBRES
+=================================== */
+
+.regalos {
+  background:
+    radial-gradient(ellipse at center, rgba(201,164,92,.08), transparent 65%),
+    #0d1729;
+}
+
+.titulo-regalos {
+  margin: 0 auto 18px;
+  color: #d8c8a7;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: italic;
+  letter-spacing: 1.5px;
+  text-transform: lowercase;
+}
+
+.mensaje-regalo {
+  max-width: 500px;
+  margin: 0 auto;
+  color: #e8dfcf;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.9;
+}
+
+/* ===================================
+   FINAL: TÍTULO ANTES DE LA FOTO
+   FOTO ORIGINAL SIN TEXTO ENCIMA
+=================================== */
+
+.pie {
+  position: relative;
+  overflow: hidden;
+  padding: 48px 20px 42px;
+  background: #0b1323;
+  border-top: 1px solid rgba(201,164,92,.45);
+}
+
+/* Se eliminan las capas de fondo sobre la foto */
+.pie::before,
+.pie::after {
+  content: none;
+}
+
+.pie > .contenedor {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.encabezado-final {
+  margin: 0 auto 8px;
+  color: var(--dorado-claro);
+  font-size: clamp(13px, 3.5vw, 17px);
+  letter-spacing: 3px;
+  line-height: 1.7;
+  text-transform: uppercase;
+}
+
+.nombres-pie {
+  margin: 4px 0 28px;
+  color: var(--marfil);
+  font-size: clamp(35px, 9vw, 52px);
+  font-weight: normal;
+  line-height: 1.2;
+}
+
+/* Fotografía final: sin óvalo, filtros ni texto superpuesto */
+
+.foto-final {
+  display: block;
+  width: 100%;
+  max-width: 760px;
+  height: auto;
+  margin: 0 auto;
+  object-fit: contain;
+  opacity: 1;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  filter: none;
+}
+
+/* Mensaje debajo de la fotografía */
+
+.mensaje-final {
+  max-width: 560px;
+  margin: 28px auto 0;
+  color: var(--marfil);
+  font-size: clamp(16px, 4vw, 19px);
+  line-height: 1.9;
+}
+
+.dios-tu-y-yo {
+  margin: 20px auto 0;
+  color: var(--dorado-claro);
+  font-size: 13px;
+  letter-spacing: 4px;
+}
+
+/* ===================================
+   LLUVIA DE CORAZONES DORADOS
+=================================== */
+
+.corazones {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.corazon {
+  position: absolute;
+  top: -30px;
+  color: rgba(201,164,92,.55);
+  animation: caer linear infinite;
+}
+
+@keyframes caer {
+  0% { transform: translateY(-40px) rotate(0deg); opacity: 0; }
+  10% { opacity: .7; }
+  90% { opacity: .55; }
+  100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes respirar {
+  0%, 100% { opacity: .65; }
+  50% { opacity: 1; }
+}
+
+@media (max-width: 520px) {
+  .seccion { padding: 52px 19px; }
+
+  .eventos {
+    grid-template-columns: 1fr;
+    max-width: 370px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .reloj { gap: 6px; }
+
+  .unidad-tiempo { padding: 13px 2px; }
+
+  .unidad {
+    font-size: 9px;
+    letter-spacing: 0;
+  }
+
+  .sello-boton {
+    width: 96px;
+    height: 96px;
+  }
+
+  .sello-iniciales { font-size: 24px; }
+
+  .sobre-frase { margin-bottom: 28px; }
+
+  .pie {
+    padding: 40px 18px 35px;
+  }
+
+  .nombres-pie {
+    margin-bottom: 24px;
+  }
+
+  .mensaje-final {
+    margin-top: 24px;
+  }
+}
+
+@media (max-height: 650px) {
+  .sobre-intro { align-items: flex-start; }
+
+  .sobre-contenido { padding: 12px 0; }
+
+  .sobre-frase { margin-bottom: 20px; }
+
+  .escenario-sobre { width: min(76vw, 310px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+
+<body class="sin-scroll">
+
+<!-- MÚSICA -->
+<audio
+  id="musica"
+  src="BERL%C3%8DN%20FELICIT%C3%80.mp3"
+  loop
+  preload="auto"
+></audio>
+
+<!-- SOBRE CERRADO -->
+<section class="sobre-intro" id="sobreIntro" aria-label="Invitación de boda">
+  <div class="sobre-contenido">
+
+    <p class="sobre-etiqueta">Una fecha, una promesa, una vida juntos</p>
+
+    <h1 class="sobre-titulo">Tienes una invitación</h1>
+
+    <p class="sobre-frase">
+      Hemos guardado para ti<br>
+      un pedacito de nuestra historia.
+    </p>
+
+    <div class="escenario-sobre">
+
+      <div class="carta-detras">
+        <strong>Edwin & Andrea</strong>
+        <span>Una promesa de amor</span>
+        <small>12 · 12 · 2026</small>
+      </div>
+
+      <div class="sobre-base">
+        <div class="solapa-izquierda"></div>
+        <div class="solapa-derecha"></div>
+        <div class="solapa-inferior"></div>
+      </div>
+
+      <div class="solapa-superior"></div>
+
+      <button
+        class="sello-boton"
+        id="abrirSello"
+        type="button"
+        aria-label="Abrir el sobre con el sello E y A"
+      >
+        <span class="sello-iniciales">E & A</span>
+        <span class="sello-adornos">✦ ✧ ✦</span>
+      </button>
+
+      <div class="sello-instruccion" id="instruccionSello">
+        Toca el sello para abrir
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- CORAZONES -->
+<div class="corazones" id="corazones" aria-hidden="true"></div>
+
+<!-- INVITACIÓN -->
+<main id="invitacion">
+
+  <!-- PORTADA FOTOGRÁFICA -->
+  <section class="seccion portada-fotografica" aria-label="Edwin y Andrea: nos casamos">
+    <h2 class="titulo-portada">¡Nos casamos!</h2>
+    <p class="promesa-portada">Una promesa de amor</p>
+  </section>
+
+  <!-- VERSÍCULO DESPUÉS DE LA FOTOGRAFÍA -->
+  <section class="seccion versiculo-despues-foto">
+    <div class="contenedor">
+
+      <p class="etiqueta">Con la bendición de Dios</p>
+
+      <div class="linea-dorada"></div>
+
+      <p class="versiculo">
+        «Mejor es vivir dos juntos que uno solo, pues si uno cae, el otro lo levanta; juntos se dan abrigo y se fortalecen. Y una cuerda de tres dobleces difícilmente se rompe»
+      </p>
+
+      <p class="referencia">ECLESIASTÉS 4:9-12</p>
+
+      <img
+        class="foto-anillos"
+        src="ANILLOS.jpeg"
+        alt="Anillos que simbolizan nuestra unión"
+        loading="lazy"
+      >
+
+    </div>
+  </section>
+
+  <!-- CUENTA REGRESIVA -->
+  <section class="seccion cuenta-regresiva">
+    <div class="contenedor">
+
+      <p class="etiqueta">Cada vez falta menos</p>
+
+      <h2>La cuenta regresiva</h2>
+
+      <div class="linea-dorada"></div>
+
+      <div class="reloj" aria-label="Cuenta regresiva para la boda">
+
+        <div class="unidad-tiempo">
+          <span class="numero" id="dias">000</span>
+          <span class="unidad">Días</span>
+        </div>
+
+        <div class="unidad-tiempo">
+          <span class="numero" id="horas">00</span>
+          <span class="unidad">Horas</span>
+        </div>
+
+        <div class="unidad-tiempo">
+          <span class="numero" id="minutos">00</span>
+          <span class="unidad">Minutos</span>
+        </div>
+
+        <div class="unidad-tiempo">
+          <span class="numero" id="segundos">00</span>
+          <span class="unidad">Segundos</span>
+        </div>
+
+      </div>
+
+      <p class="fecha-especial">12 · 12 · 2026</p>
+
+    </div>
+  </section>
+
+  <!-- NUESTRO GRAN DÍA -->
+  <section class="seccion">
+    <div class="contenedor">
+
+      <img
+        class="foto-detalle"
+        src="ZAPATOS.jpeg"
+        alt="Detalle especial de nuestra boda"
+        loading="lazy"
+      >
+
+      <p class="etiqueta"></p>
+
+      <h2>Nuestro gran día</h2>
+
+      <p class="versiculo">
+        Nos llena de alegría celebrar este momento
+        rodeados de las personas que hacen parte
+        de nuestra historia.
+      </p>
+
+      <div class="linea-dorada"></div>
+
+      <div class="eventos">
+
+        <!-- CEREMONIA RELIGIOSA -->
+        <article class="tarjeta-evento">
+
+          <span class="icono-evento" aria-hidden="true">♧</span>
+
+          <p class="etiqueta">Ceremonia religiosa</p>
+
+          <p class="hora">3:00 p. m.</p>
+
+          <p class="lugar">
+            Parroquia Señor de los Milagros de Samacá
+          </p>
+
+          <p class="direccion">
+            Capilla El Voto<br>
+            Samacá, Boyacá
+          </p>
+
+        </article>
+
+        <!-- RECEPCIÓN -->
+        <article class="tarjeta-evento">
+
+          <span class="icono-evento" aria-hidden="true">✧</span>
+
+          <p class="etiqueta">Celebremos juntos</p>
+
+          <h3>Recepción</h3>
+
+          <p class="lugar">Rancho Gran Gils</p>
+
+          <p class="direccion">
+            Vereda Churuvita<br>
+            Samacá, Boyacá
+          </p>
+
+        </article>
+
+      </div>
+
+      <p class="nota-invitados">
+        Queremos compartir este momento con nuestro círculo
+        más cercano; por ello, la invitación es válida únicamente
+        para la(s) persona(s) a quien va dirigida.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- LLUVIA DE SOBRES -->
+  <section class="seccion regalos">
+    <div class="contenedor">
+
+      <img
+        class="foto-corbatin"
+        src="CORBAT%C3%8DN.jpeg"
+        alt="Detalle de nuestra celebración"
+        loading="lazy"
+      >
+
+      <h2 class="titulo-regalos">lluvia de sobres</h2>
+
+      <p class="mensaje-regalo">
+        Tu presencia será nuestro regalo más bonito.
+        Si deseas darnos un detalle, lo recibiremos
+        con mucho amor y gratitud.
+      </p>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- FINAL: TÍTULO, FOTOGRAFÍA Y MENSAJE -->
+<footer class="pie">
+  <div class="contenedor">
+
+    <!-- TEXTO ANTES DE LA FOTO -->
+    <p class="encabezado-final">
+      Con gran ilusión y cariño
+    </p>
+
+    <h2 class="nombres-pie">
+      Edwin & Andrea
+    </h2>
+
+    <!-- FOTO ORIGINAL, SIN TEXTO ENCIMA -->
+    <img
+      class="foto-final"
+      src="FINAL%202.0.jpeg"
+      alt="Edwin y Andrea"
+      loading="lazy"
+    >
+
+    <!-- MENSAJE DEBAJO DE LA FOTO -->
+    <p class="mensaje-final">
+      Que Dios bendiga nuestro hogar y guíe cada paso de nuestra historia.
+    </p>
+
+    <p class="dios-tu-y-yo">
+      TÚ Y YO
+    </p>
+
+  </div>
+</footer>
+
+<script>
+/* ===================================
+   ABRIR EL SOBRE Y MOSTRAR LA INVITACIÓN
+=================================== */
+
+const sobreIntro = document.getElementById("sobreIntro");
+const botonSello = document.getElementById("abrirSello");
+const instruccionSello = document.getElementById("instruccionSello");
+const musica = document.getElementById("musica");
+
+let sobreAbierto = false;
+
+botonSello.addEventListener("click", function () {
+  if (sobreAbierto) return;
+
+  sobreAbierto = true;
+
+  sobreIntro.classList.add("abriendo");
+  instruccionSello.textContent = "Con cariño, Edwin & Andrea";
+
+  musica.volume = 0.7;
+
+  musica.play().catch(function () {
+    /* La invitación funciona aunque la música no se inicie. */
+  });
+
+  setTimeout(function () {
+    sobreIntro.classList.add("retirado");
+    document.body.classList.remove("sin-scroll");
+  }, 1250);
+
+  setTimeout(function () {
+    sobreIntro.style.display = "none";
+  }, 2300);
+});
+
+/* ===================================
+   CUENTA REGRESIVA
+   12 DE DICIEMBRE DE 2026, 3:00 P. M.
+=================================== */
+
+const fechaBoda = new Date("2026-12-12T15:00:00-05:00").getTime();
+
+function actualizarCuenta() {
+  const ahora = Date.now();
+  const diferencia = fechaBoda - ahora;
+
+  if (diferencia <= 0) {
+    document.getElementById("dias").textContent = "0";
+    document.getElementById("horas").textContent = "00";
+    document.getElementById("minutos").textContent = "00";
+    document.getElementById("segundos").textContent = "00";
+    return;
+  }
+
+  const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+  const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+  const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
+  const segundos = Math.floor((diferencia / 1000) % 60);
+
+  document.getElementById("dias").textContent = dias;
+  document.getElementById("horas").textContent = String(horas).padStart(2, "0");
+  document.getElementById("minutos").textContent = String(minutos).padStart(2, "0");
+  document.getElementById("segundos").textContent = String(segundos).padStart(2, "0");
+}
+
+actualizarCuenta();
+setInterval(actualizarCuenta, 1000);
+
+/* ===================================
+   LLUVIA DE CORAZONES DORADOS
+=================================== */
+
+const contenedorCorazones = document.getElementById("corazones");
+
+for (let i = 0; i < 22; i++) {
+  const corazon = document.createElement("span");
+
+  corazon.className = "corazon";
+  corazon.textContent = Math.random() > 0.5 ? "♡" : "♥";
+
+  corazon.style.left = Math.random() * 100 + "%";
+  corazon.style.animationDuration = (9 + Math.random() * 12) + "s";
+  corazon.style.animationDelay = (-Math.random() * 20) + "s";
+  corazon.style.fontSize = (10 + Math.random() * 15) + "px";
+
+  contenedorCorazones.appendChild(corazon);
+}
+</script>
+
+</body>
+</html>
